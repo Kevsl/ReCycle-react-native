@@ -15,12 +15,22 @@ import { Home } from './Views/Home'
 import { Profile } from './Views/Profile'
 import { CreateAd } from './Views/Create-ad'
 
+import { Login } from './Views/Login'
+
 const App = () => {
   const Stack = createNativeStackNavigator()
 
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name="login"
+          component={Login}
+          options={{
+            animation: 'slide_from_right',
+            headerShown: false,
+          }}
+        />
         <Stack.Screen
           name="home"
           component={Home}
