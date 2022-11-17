@@ -136,7 +136,10 @@ export const Login = ({ navigation }) => {
 
       <TouchableOpacity
         style={LoginStyle.loginBtn}
-        onPress={() => handleLogin()}
+        onPress={() => {
+          handleLogin()
+          navigation.navigate('home')
+        }}
       >
         <Text style={LoginStyle.loginText}>Connexion</Text>
       </TouchableOpacity>
