@@ -158,6 +158,9 @@ export const Login = ({ navigation }) => {
           style={LoginStyle.loading}
         />
       ) : null}
+      <TouchableOpacity onPress={() => navigation.navigate('profile')}>
+        <Text>Profil</Text>
+      </TouchableOpacity>
     </View>
   )
 }

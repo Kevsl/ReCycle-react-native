@@ -40,7 +40,7 @@ const App = () => {
           }}
         />
         <Stack.Screen
-          name="=profile"
+          name="profile"
           component={Profile}
           options={{
             animation: 'slide_from_right',
