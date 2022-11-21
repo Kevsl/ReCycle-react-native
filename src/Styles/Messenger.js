@@ -20,4 +20,63 @@ export const MessengerPageStyle = (StyleSheet.createstyle = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
   },
+
+  inputContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    backgroundColor: '#F8F9FE',
+    width: '90%',
+    marginHorizontal: '5%',
+    height: 30,
+    borderRadius: 25,
+  },
+  searchIcon: {
+    width: 30,
+    height: 30,
+    marginHorizontal: 7,
+  },
+  scrollView: {
+    width: '90%',
+    marginHorizontal: '5%',
+    marginVertical: '5%',
+  },
+  messageContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginVertical: '5%',
+    alignItems: 'center',
+  },
+  userPic: {
+    width: 50,
+    height: 50,
+    borderRadius: 999,
+  },
+  messageDatas: {
+    width: '70%',
+  },
+  notification: {
+    backgroundColor: '#91C788',
+    width: 30,
+    height: 30,
+    borderRadius: 999,
+  },
+  notificationText: {
+    color: 'white',
+    textAlign: 'center',
+    marginTop: 7,
+  },
+  messageUserName: {
+    color: '#1F2024',
+    fontSize: 12,
+    fontFamily: 'Baloo',
+  },
+  messageContent: {
+    color: '#6A6F7D',
+    fontSize: 12,
+    fontFamily: 'Baloo',
+  },
+  notificationContainer: {
+    width: '10%',
+  },
 }))
