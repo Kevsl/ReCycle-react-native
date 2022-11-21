@@ -16,6 +16,8 @@ import { Profile } from './Views/Profile'
 import { CreateAd } from './Views/Create-ad'
 import { BalancePage } from './Views/BalancePage'
 import { Login } from './Views/Login'
+import { Messenger } from './Views/Messenger'
+import { SearchPage } from './Views/Search'
 
 const App = () => {
   const Stack = createNativeStackNavigator()
@@ -63,11 +65,25 @@ const App = () => {
             headerShown: false,
           }}
         />
+        <Stack.Screen
+          name="messenger"
+          component={Messenger}
+          options={{
+            animation: 'slide_from_right',
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="search"
+          component={SearchPage}
+          options={{
+            animation: 'slide_from_right',
+            headerShown: false,
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   )
 }
-
-const styles = StyleSheet.create({})
 
 export default App

@@ -10,7 +10,7 @@ import { BalancePageStyle } from '../Styles/BalancePage'
 export const BalancePage = ({ navigation }) => {
   return (
     <View style={BalancePageStyle.container}>
-      <TouchableOpacity onPress={console.log('Une bonne chose de faite ! ')}>
+      <TouchableOpacity onPress={() => navigation.goBack()}>
         <Image
           source={goBackArrow}
           style={BalancePageStyle.goBackArrow}
@@ -22,7 +22,7 @@ export const BalancePage = ({ navigation }) => {
       </View>
       <View style={BalancePageStyle.balanceContainer}></View>
       <View style={BalancePageStyle.navBar}>
-        <NavBar />
+        <NavBar navigation={navigation} />
       </View>
     </View>
   )

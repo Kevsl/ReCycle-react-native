@@ -50,7 +50,7 @@ export const Login = ({ navigation }) => {
 
   return (
     <View style={LoginStyle.container}>
-      <TouchableOpacity onPress={console.log('Une bonne chose de faite ! ')}>
+      <TouchableOpacity onPress={() => navigation.goBack()}>
         <Image
           source={goBackArrow}
           style={LoginStyle.goBackArrow}
@@ -158,9 +158,6 @@ export const Login = ({ navigation }) => {
           style={LoginStyle.loading}
         />
       ) : null}
-      <TouchableOpacity onPress={() => navigation.navigate('profile')}>
-        <Text>Profil</Text>
-      </TouchableOpacity>
     </View>
   )
 }

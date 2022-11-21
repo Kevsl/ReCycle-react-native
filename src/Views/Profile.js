@@ -11,7 +11,7 @@ import { ProfileStyle } from '../Styles/Profile'
 export const Profile = ({ navigation }) => {
   return (
     <View style={ProfileStyle.container}>
-      <TouchableOpacity onPress={console.log('Une bonne chose de faite ! ')}>
+      <TouchableOpacity onPress={() => navigation.goBack()}>
         <Image
           source={goBackArrow}
           style={ProfileStyle.goBackArrow}
@@ -58,7 +58,7 @@ export const Profile = ({ navigation }) => {
         </TouchableOpacity>
       </View>
       <View style={ProfileStyle.navBar}>
-        <NavBar />
+        <NavBar navigation={navigation} />
       </View>
     </View>
   )

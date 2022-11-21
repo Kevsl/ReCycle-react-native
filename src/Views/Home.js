@@ -17,7 +17,7 @@ import { HomeStyle } from '../Styles/Home'
 export const Home = ({ navigation }) => {
   return (
     <View style={HomeStyle.container}>
-      <TouchableOpacity onPress={console.log('Une bonne chose de faite ! ')}>
+      <TouchableOpacity onPress={() => navigation.goBack()}>
         <Image
           source={goBackArrow}
           style={HomeStyle.goBackArrow}
@@ -86,7 +86,7 @@ export const Home = ({ navigation }) => {
           </View>
         </View>
       </ScrollView>
-      <NavBar />
+      <NavBar navigation={navigation} />
     </View>
   )
 }
