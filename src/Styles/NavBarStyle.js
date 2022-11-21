@@ -11,6 +11,9 @@ export const NavBarStyle = (StyleSheet.createstyle = StyleSheet.create({
     justifyContent: 'space-around',
     height: 40,
     marginBottom: 20,
+    position: 'relative',
+    bottom: 0,
+    left: 0,
   },
   icone: {
     width: 40,

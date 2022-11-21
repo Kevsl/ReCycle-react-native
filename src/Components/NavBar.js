@@ -20,7 +20,7 @@ export const NavBar = (props) => {
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
-          navigation.navigate('chat')
+          navigation.navigate('messenger')
         }}
       >
         <Image source={messages} style={NavBarStyle.icone} />

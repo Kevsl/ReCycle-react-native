@@ -1,11 +1,9 @@
-import {
+import { Text, View } from 'react-native'
 
-    Text,
-    View,
-  } from 'react-native';
-
-export const CreateAd = ({navigation}) =>{
-    return(
-        <View><Text>Créer une annonce</Text></View>
-    )
+export const CreateAd = ({ navigation }) => {
+  return (
+    <View>
+      <Text>Créer une annonce</Text>
+    </View>
+  )
 }
