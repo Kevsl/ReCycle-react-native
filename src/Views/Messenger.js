@@ -18,30 +18,59 @@ import { TextInput } from 'react-native-gesture-handler'
 export const Messenger = ({ navigation }) => {
   const [Datas, setDatas] = useState([
     {
+      id: 1,
       name: 'Jacques123',
       message: 'Je suis intéréssé par l Angleterre ',
       unread: 3,
       image: englishpm,
     },
     {
+      id: 2,
       name: 'Ernesto',
       message: 'Je suis intéréssé par l Angleterre ',
       unread: 3,
       image: englishpm,
     },
     {
+      id: 3,
       name: 'Jacques123',
       message: 'Je suis intéréssé par l Angleterre ',
       unread: 5,
       image: englishpm,
     },
     {
+      id: 4,
       name: 'Jacques123',
       message: 'Je suis intéréssé par l Angleterre ',
       unread: 9,
       image: englishpm,
     },
     {
+      id: 5,
+      name: 'Jacques123',
+      message: 'Je suis intéréssé par l Angleterre ',
+      image: englishpm,
+    },
+    {
+      id: 6,
+      name: 'Jacques123',
+      message: 'Je suis intéréssé par l Angleterre ',
+      image: englishpm,
+    },
+    {
+      id: 7,
+      name: 'Jacques123',
+      message: 'Je suis intéréssé par l Angleterre ',
+      image: englishpm,
+    },
+    {
+      id: 8,
+      name: 'Jacques123',
+      message: 'Je suis intéréssé par l Angleterre ',
+      image: englishpm,
+    },
+    {
+      id: 9,
       name: 'Jacques123',
       message: 'Je suis intéréssé par l Angleterre ',
       image: englishpm,
@@ -74,8 +103,13 @@ export const Messenger = ({ navigation }) => {
       </View>
       <ScrollView style={MessengerPageStyle.scrollView}>
         {Datas.map((data) => (
-          // eslint-disable-next-line prettier/prettier
-          <View style={MessengerPageStyle.messageContainer}>
+          <TouchableOpacity
+            style={MessengerPageStyle.messageContainer}
+            key={data.id}
+            onPress={() =>
+              navigation.navigate('chat', { conversationId: '123' })
+            }
+          >
             <Image source={data.image} style={MessengerPageStyle.userPic} />
             <View style={MessengerPageStyle.messageDatas}>
               <Text style={MessengerPageStyle.messageUserName}>
@@ -94,7 +128,7 @@ export const Messenger = ({ navigation }) => {
                 </View>
               ) : null}
             </View>
-          </View>
+          </TouchableOpacity>
         ))}
       </ScrollView>
 
