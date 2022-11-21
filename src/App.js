@@ -14,7 +14,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { Home } from './Views/Home'
 import { Profile } from './Views/Profile'
 import { CreateAd } from './Views/Create-ad'
-
+import { BalancePage } from './Views/BalancePage'
 import { Login } from './Views/Login'
 
 const App = () => {
@@ -50,6 +50,14 @@ const App = () => {
         <Stack.Screen
           name="create-ad"
           component={CreateAd}
+          options={{
+            animation: 'slide_from_right',
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="balance"
+          component={BalancePage}
           options={{
             animation: 'slide_from_right',
             headerShown: false,
