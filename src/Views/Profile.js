@@ -48,7 +48,10 @@ export const Profile = ({ navigation }) => {
           <Text style={ProfileStyle.menuText}>Mes annonces</Text>
           <Image source={rightArrow} style={ProfileStyle.rightArrow} />
         </TouchableOpacity>
-        <TouchableOpacity style={ProfileStyle.mainMenunuItem}>
+        <TouchableOpacity
+          style={ProfileStyle.mainMenunuItem}
+          onPress={() => navigation.navigate('balance')}
+        >
           <Text style={ProfileStyle.menuText}>Mon solde</Text>
           <Image source={rightArrow} style={ProfileStyle.rightArrow} />
         </TouchableOpacity>

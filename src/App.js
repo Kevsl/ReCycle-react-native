@@ -18,6 +18,7 @@ import { BalancePage } from './Views/BalancePage'
 import { Login } from './Views/Login'
 import { Messenger } from './Views/Messenger'
 import { SearchPage } from './Views/Search'
+import { Chat } from './Views/Chat'
 
 const App = () => {
   const Stack = createNativeStackNavigator()
@@ -76,6 +77,14 @@ const App = () => {
         <Stack.Screen
           name="search"
           component={SearchPage}
+          options={{
+            animation: 'slide_from_right',
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="chat"
+          component={Chat}
           options={{
             animation: 'slide_from_right',
             headerShown: false,
