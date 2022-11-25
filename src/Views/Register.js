@@ -50,11 +50,6 @@ export const Register = ({navigation}) => {
     function handleRegister() {
         if (passOK && emailOk && similarPassOk) {
             navigation.navigate('home');
-        } else {
-            alert("Problème avec vos identifiants :" +
-                "\nemailOk : " + emailOk +
-                "\npassOK : " + passOK +
-                "\nsimilarPassOk : " + similarPassOk)
         }
     }
 
@@ -112,7 +107,7 @@ export const Register = ({navigation}) => {
 
                 {password.length > 0 && passOK === false && (
                     <Text style={RegisterStyle.wrongInput}>
-                        Le mot de passe doit contenir au moins 8 caractères, dont 1 minuscule, 1 majuscule, 1 chiffre et
+                        Le mot de passe doit contenir au moins 8 caractères, dont au moins 1 minuscule, 1 majuscule, 1 chiffre et
                         un caractère spécial.
                     </Text>
                 )}
@@ -173,8 +168,6 @@ export const Register = ({navigation}) => {
             </View>
 
             <TouchableOpacity
-                //style={RegisterStyle.registerBtn}
-
                 style={
                     disabledRegisterBtn === true
                         ? RegisterStyle.registerBtnDisabled
