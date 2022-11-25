@@ -145,7 +145,7 @@ export const Login = ({ navigation }) => {
       </TouchableOpacity>
 
       <TouchableOpacity
-        onPress={() => navigation.navigate('Register')}
+        onPress={() => navigation.navigate('register')}
         style={LoginStyle.noAccount}
       >
         <Text style={LoginStyle.noAccountText}>Pas de compte ?</Text>

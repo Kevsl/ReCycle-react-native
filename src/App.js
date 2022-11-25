@@ -18,6 +18,7 @@ import { BalancePage } from './Views/BalancePage'
 import { Login } from './Views/Login'
 import { Messenger } from './Views/Messenger'
 import { SearchPage } from './Views/Search'
+import { Register } from './Views/Register'
 
 const App = () => {
   const Stack = createNativeStackNavigator()
@@ -81,6 +82,14 @@ const App = () => {
             headerShown: false,
           }}
         />
+          <Stack.Screen
+              name="register"
+              component={Register}
+              options={{
+                  animation: 'slide_from_right',
+                  headerShown: false,
+              }}
+          />
       </Stack.Navigator>
     </NavigationContainer>
   )
