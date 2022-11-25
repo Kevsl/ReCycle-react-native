@@ -21,9 +21,7 @@ export const Register = ({navigation}) => {
     const [emailOk, setEmailOk] = useState(false)
     const [passOK, setPassOk] = useState(false)
     const [similarPassOk, setSimilarPassOk] = useState(false)
-
-    useEffect(() => {
-    }, [])
+    const [disabledRegisterBtn, setDisabledRegisterBtn] = useState(true)
 
     function handleEmail(value) {
         checkEmail(value) === true ? setEmailOk(true) : setEmailOk(false)
@@ -35,15 +33,23 @@ export const Register = ({navigation}) => {
 
     function handleSimilarPasswords(password1, password2) {
         if (password1 === password2) {
-            setSimilarPassOk(true)
+            setSimilarPassOk(true);
         } else if (password1 !== password2) {
             setSimilarPassOk(false)
         }
     }
 
+    useEffect(() => {
+        if (passOK && emailOk && similarPassOk) {
+            setDisabledRegisterBtn(false)
+        } else {
+            setDisabledRegisterBtn(true)
+        }
+    }, [passOK, emailOk, similarPassOk])
+
     function handleRegister() {
         if (passOK && emailOk && similarPassOk) {
-            navigation.navigate('home')
+            navigation.navigate('home');
         } else {
             alert("Problème avec vos identifiants :" +
                 "\nemailOk : " + emailOk +
@@ -167,12 +173,22 @@ export const Register = ({navigation}) => {
             </View>
 
             <TouchableOpacity
-                style={RegisterStyle.loginBtn}
+                //style={RegisterStyle.registerBtn}
+
+                style={
+                    disabledRegisterBtn === true
+                        ? RegisterStyle.registerBtnDisabled
+                        : disabledRegisterBtn === false
+                            ? RegisterStyle.registerBtnEnabled
+                            : RegisterStyle.registerBtnDisabled
+                }
+
                 onPress={() => {
                     handleRegister()
                 }}
+                disabled={disabledRegisterBtn}
             >
-                <Text style={RegisterStyle.loginText}>Inscription</Text>
+                <Text style={RegisterStyle.registerText}>Inscription</Text>
             </TouchableOpacity>
 
             {isLoading ? (

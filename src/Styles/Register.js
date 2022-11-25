@@ -52,7 +52,7 @@ export const RegisterStyle = (StyleSheet.createstyle = StyleSheet.create({
     fontFamily: 'baloo',
   },
 
-  loginBtn: {
+  registerBtnEnabled: {
     width: '90%',
     borderRadius: 3,
     height: 50,
@@ -62,7 +62,19 @@ export const RegisterStyle = (StyleSheet.createstyle = StyleSheet.create({
     marginHorizontal: '5%',
     marginVertical: 10,
   },
-  loginText: {
+
+  registerBtnDisabled: {
+    width: '90%',
+    borderRadius: 3,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#939393',
+    marginHorizontal: '5%',
+    marginVertical: 10,
+  },
+
+  registerText: {
     color: '#fff',
     fontFamily: 'baloo',
   },
