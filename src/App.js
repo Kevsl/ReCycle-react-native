@@ -19,6 +19,7 @@ import { Login } from './Views/Login'
 import { Messenger } from './Views/Messenger'
 import { SearchPage } from './Views/Search'
 import { Register } from './Views/Register'
+import { Chat } from './Views/Chat'
 
 const App = () => {
   const Stack = createNativeStackNavigator()
@@ -82,14 +83,22 @@ const App = () => {
             headerShown: false,
           }}
         />
-          <Stack.Screen
-              name="register"
-              component={Register}
-              options={{
-                  animation: 'slide_from_right',
-                  headerShown: false,
-              }}
-          />
+        <Stack.Screen
+          name="register"
+          component={Register}
+          options={{
+            animation: 'slide_from_right',
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="chat"
+          component={Chat}
+          options={{
+            animation: 'slide_from_right',
+            headerShown: false,
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   )
