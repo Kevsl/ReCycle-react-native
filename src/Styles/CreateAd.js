@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native'
 import {color} from 'react-native-reanimated'
 
-export const MapStyle = (StyleSheet.createstyle = StyleSheet.create({
+export const CreateAdStyle = (StyleSheet.createstyle = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',

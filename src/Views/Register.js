@@ -9,10 +9,10 @@ import {
 } from 'react-native'
 import {checkEmail, checkPassword} from '../Utils/regex'
 import {RegisterStyle} from '../Styles/Register'
-import goBackArrow from '../Assets/goBackArrow.png'
 import redCross from '../Assets/redCross.png'
 import greenCheck from '../Assets/greenCheck.png'
 import {LoginStyle} from "../Styles/Login";
+import {HeaderTitle} from "../Components/HeaderTitle";
 
 export const Register = ({navigation}) => {
     const [email, setEmail] = useState('')
@@ -57,7 +57,7 @@ export const Register = ({navigation}) => {
     return (
         <View style={RegisterStyle.container}>
             <View style={RegisterStyle.titleContainer}>
-                <Text style={RegisterStyle.title}>Bonjour</Text>
+                <HeaderTitle title={"Bienvenue"}/>
                 <Text style={RegisterStyle.subTitle}>
                     Création de compte
                 </Text>
@@ -100,7 +100,8 @@ export const Register = ({navigation}) => {
 
                 {password.length > 0 && passOK === false && (
                     <Text style={RegisterStyle.wrongInput}>
-                        Le mot de passe doit contenir au moins 8 caractères, dont au moins 1 minuscule, 1 majuscule, 1 chiffre et
+                        Le mot de passe doit contenir au moins 8 caractères, dont au moins 1 minuscule, 1 majuscule, 1
+                        chiffre et
                         un caractère spécial.
                     </Text>
                 )}
