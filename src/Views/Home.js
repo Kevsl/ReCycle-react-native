@@ -13,17 +13,12 @@ import filters from '../Assets/filters.png'
 import shoes from '../Assets/shoes.jpeg'
 
 import { HomeStyle } from '../Styles/Home'
+import {GoBackArrow} from "../Components/GoBackArrow";
 
 export const Home = ({ navigation }) => {
   return (
     <View style={HomeStyle.container}>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Image
-          source={goBackArrow}
-          style={HomeStyle.goBackArrow}
-          accessibilityLabel="Retourner sur la page précèdente"
-        />
-      </TouchableOpacity>
+      <GoBackArrow navigation={navigation} />
       <View style={HomeStyle.titleContainer}>
         <Text style={HomeStyle.title}>Mes annonces </Text>
       </View>

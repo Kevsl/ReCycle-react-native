@@ -54,7 +54,7 @@ export const LoginStyle = (StyleSheet.createstyle = StyleSheet.create({
 
   loginBtn: {
     width: '90%',
-    borderRadius: 3,
+    borderRadius: 10,
     height: 50,
     alignItems: 'center',
     justifyContent: 'center',

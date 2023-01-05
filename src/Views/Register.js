@@ -12,6 +12,7 @@ import {RegisterStyle} from '../Styles/Register'
 import goBackArrow from '../Assets/goBackArrow.png'
 import redCross from '../Assets/redCross.png'
 import greenCheck from '../Assets/greenCheck.png'
+import {LoginStyle} from "../Styles/Login";
 
 export const Register = ({navigation}) => {
     const [email, setEmail] = useState('')
@@ -55,14 +56,6 @@ export const Register = ({navigation}) => {
 
     return (
         <View style={RegisterStyle.container}>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
-                <Image
-                    source={goBackArrow}
-                    style={RegisterStyle.goBackArrow}
-                    accessibilityLabel="Retourner sur la page précédente"
-                />
-            </TouchableOpacity>
-
             <View style={RegisterStyle.titleContainer}>
                 <Text style={RegisterStyle.title}>Bonjour</Text>
                 <Text style={RegisterStyle.subTitle}>
@@ -182,6 +175,14 @@ export const Register = ({navigation}) => {
                 disabled={disabledRegisterBtn}
             >
                 <Text style={RegisterStyle.registerText}>Inscription</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+                onPress={() => navigation.navigate('login')}
+                style={LoginStyle.noAccount}
+            >
+                <Text style={LoginStyle.noAccountText}>Déjà inscrit ?</Text>
+                <Text style={LoginStyle.noAccountSpan}> Connexion</Text>
             </TouchableOpacity>
 
             {isLoading ? (

@@ -13,6 +13,7 @@ import { LoginStyle } from '../Styles/Login'
 import goBackArrow from '../Assets/goBackArrow.png'
 import redCross from '../Assets/redCross.png'
 import greenCheck from '../Assets/greenCheck.png'
+import {GoBackArrow} from "../Components/GoBackArrow";
 
 export const Login = ({ navigation }) => {
   const [email, setEmail] = useState('')
@@ -50,13 +51,6 @@ export const Login = ({ navigation }) => {
 
   return (
     <View style={LoginStyle.container}>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
-        <Image
-          source={goBackArrow}
-          style={LoginStyle.goBackArrow}
-          accessibilityLabel="Retourner sur la page précèdente"
-        />
-      </TouchableOpacity>
       <View style={LoginStyle.titleContainer}>
         <Text style={LoginStyle.title}>Bonjour</Text>
         <Text style={LoginStyle.subTitle}>
