@@ -29,23 +29,20 @@ export const Listings = () => {
         })
     }, [])
 
-    const keys = Object.keys(listings)
-    const values = Object.values(listings)
-
     // kevin@gmail.com
     return (
         <ScrollView style={ListingsStyle.AdScrollContainer}>
             <View style={ListingsStyle.flex}>
                 {isMounted === true ? (
-                    values.map((item, index) => {
+                    listings.map((item) => {
+                        console.log(item.images[0])
                         return (
-                            <View
-                                style={ListingsStyle.adsContainer}
-                                key={keys[index]}
-                            >
+                            <View style={ListingsStyle.adsContainer}>
                                 <View style={ListingsStyle.ad}>
                                     <Image
-                                        source={item.image}
+                                        source={{
+                                            uri: item.images[0],
+                                        }}
                                         style={ListingsStyle.adImage}
                                     />
                                     <View style={ListingsStyle.adInformations}>
