@@ -21,6 +21,7 @@ import {SearchPage} from './Views/Search'
 import {Register} from './Views/Register'
 import {Chat} from './Views/Chat'
 import {Map} from './Views/Map'
+import {Product} from "./Views/Product";
 
 const App = () => {
     const Stack = createNativeStackNavigator()
@@ -103,6 +104,14 @@ const App = () => {
                 <Stack.Screen
                     name="map"
                     component={Map}
+                    options={{
+                        animation: 'slide_from_right',
+                        headerShown: false,
+                    }}
+                />
+                <Stack.Screen
+                    name="product"
+                    component={Product}
                     options={{
                         animation: 'slide_from_right',
                         headerShown: false,

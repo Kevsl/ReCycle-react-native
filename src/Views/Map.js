@@ -19,7 +19,7 @@ export const Map = ({navigation}) => {
                 </Text>
             </View>
 
-            <ValidateBtn navigation={navigation} navigationTarget={'login'} btnText={"Valider"}/>
+            <ValidateBtn navigation={navigation} navigationTarget={'create-ad'} btnText={"Valider"}/>
         </View>
     )
 }
