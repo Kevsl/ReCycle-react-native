@@ -13,7 +13,7 @@ export const Listings = () => {
     useEffect(() => {
         getListings().then((res) => {
             setListings(res)
-            setIsMounted(false)
+            setIsMounted(true)
         })
     }, [])
 
