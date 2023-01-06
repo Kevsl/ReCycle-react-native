@@ -1,0 +1,14 @@
+{
+    "migIndex": 1,
+    "data": [
+      {
+        "path": "src/Assets/fonts/Baloo-Regular.ttf",
+        "sha1": "95576f01904f5cd68c341c9594bf4cbccaaea180"
+      },
+      {
+        "path": "src/Assets/fonts/Baloo2-VariableFont_wght.ttf",
+        "sha1": "0566a71e781ae18c27db4a6fee34b0d236437885"
+      }
+    ]
+  }
+  
