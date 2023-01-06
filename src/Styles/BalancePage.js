@@ -13,8 +13,9 @@ export const BalancePageStyle = (StyleSheet.createstyle = StyleSheet.create({
     },
     title: {
         color: '#6A6F7D',
-        fontSize: 30,
+        fontSize: 20,
         fontFamily: 'baloo',
+        textAlign: 'center',
     },
     navBar: {
         position: 'absolute',

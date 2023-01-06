@@ -37,13 +37,9 @@ export const BalancePage = ({ navigation }) => {
             <View style={BalancePageStyle.titleContainer}></View>
             <View style={BalancePageStyle.balanceContainer}>
                 {balance ? (
-                    balance.map((item) => {
-                        return (
-                            <Text style={BalancePageStyle.title}>
-                                {balance.amount} Palmiers{' '}
-                            </Text>
-                        )
-                    })
+                    <Text style={BalancePageStyle.title}>
+                        {balance.amount} Palmiers{' '}
+                    </Text>
                 ) : (
                     <ActivityIndicator size="large" color="#14213D" />
                 )}
