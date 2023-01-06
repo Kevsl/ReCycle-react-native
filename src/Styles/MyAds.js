@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-export const HomeStyle = (StyleSheet.createstyle = StyleSheet.create({
+export const MyAdsStyle = (StyleSheet.createstyle = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
@@ -16,6 +16,7 @@ export const HomeStyle = (StyleSheet.createstyle = StyleSheet.create({
         fontFamily: 'baloo',
         marginHorizontal: '5%',
         marginBottom: '5%',
+        marginTop: '10%',
     },
     AdsContainerTitle: {
         fontSize: 18,

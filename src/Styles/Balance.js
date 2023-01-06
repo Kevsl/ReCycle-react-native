@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-export const BalancePageStyle = (StyleSheet.createstyle = StyleSheet.create({
+export const BalanceStyle = (StyleSheet.createstyle = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
@@ -12,10 +12,9 @@ export const BalancePageStyle = (StyleSheet.createstyle = StyleSheet.create({
         marginHorizontal: '5%',
     },
     title: {
-        color: '#6A6F7D',
+        color: '#fff',
         fontSize: 20,
         fontFamily: 'baloo',
-        textAlign: 'center',
     },
     navBar: {
         position: 'absolute',
@@ -29,5 +28,8 @@ export const BalancePageStyle = (StyleSheet.createstyle = StyleSheet.create({
         marginVertical: '10%',
         backgroundColor: '#91C788',
         borderRadius: 25,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 }))

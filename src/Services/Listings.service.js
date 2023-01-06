@@ -9,8 +9,6 @@ export async function getListings() {
     let url = `${apiUrl}listings`
 
     return axios.get(url, axiosConfig).then((res) => {
-        console.log(url)
-        console.log(res)
         return res.data
     })
 }

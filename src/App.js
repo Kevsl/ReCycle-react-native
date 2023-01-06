@@ -14,12 +14,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { Home } from './Views/Home'
 import { Profile } from './Views/Profile'
 import { CreateAd } from './Views/Create-ad'
-import { BalancePage } from './Views/BalancePage'
 import { Login } from './Views/Login'
 import { Messenger } from './Views/Messenger'
 import { SearchPage } from './Views/Search'
 import { Register } from './Views/Register'
 import { Chat } from './Views/Chat'
+import { MyAds } from './Views/MyAds'
 
 const App = () => {
     const Stack = createNativeStackNavigator()
@@ -43,6 +43,14 @@ const App = () => {
                         headerShown: false,
                     }}
                 />
+                <Stack.Screen
+                    name="my-ads"
+                    component={MyAds}
+                    options={{
+                        animation: 'slide_from_right',
+                        headerShown: false,
+                    }}
+                />
 
                 <Stack.Screen
                     name="profile"
@@ -61,24 +69,8 @@ const App = () => {
                     }}
                 />
                 <Stack.Screen
-                    name="balance"
-                    component={BalancePage}
-                    options={{
-                        animation: 'slide_from_right',
-                        headerShown: false,
-                    }}
-                />
-                <Stack.Screen
                     name="messenger"
                     component={Messenger}
-                    options={{
-                        animation: 'slide_from_right',
-                        headerShown: false,
-                    }}
-                />
-                <Stack.Screen
-                    name="search"
-                    component={SearchPage}
                     options={{
                         animation: 'slide_from_right',
                         headerShown: false,

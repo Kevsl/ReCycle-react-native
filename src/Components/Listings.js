@@ -1,34 +1,22 @@
 import React, { useState, useEffect } from 'react'
-import {
-    Text,
-    View,
-    Image,
-    TextInput,
-    TouchableOpacity,
-    ActivityIndicator,
-} from 'react-native'
+import { Text, View, Image, TouchableOpacity } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { ListingsStyle } from '../Styles/Listings'
 import { getListings } from '../Services/Listings.service'
 
 import redHeart from '../Assets/redHeart.png'
+import { Loader } from './Loader'
 export const Listings = () => {
     const [listings, setListings] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
-    const [okeys, setOkeys] = useState()
-    const [ovalues, setOvalues] = useState()
     const [isMounted, setIsMounted] = useState(false)
 
     useEffect(() => {
-        setIsLoading(true)
         getListings().then((res) => {
             setListings(res)
-            setIsLoading(false)
-            setIsMounted(true)
+            setIsMounted(false)
         })
     }, [])
 
-    // kevin@gmail.com
     return (
         <ScrollView style={ListingsStyle.AdScrollContainer}>
             <View style={ListingsStyle.flex}>
@@ -36,7 +24,7 @@ export const Listings = () => {
                     listings.map((item) => {
                         return (
                             <View style={ListingsStyle.adsContainer}>
-                                <View style={ListingsStyle.ad}>
+                                <View style={ListingsStyle.ad} key={item.id}>
                                     <Image
                                         source={{
                                             uri: item.images[0],
@@ -62,7 +50,7 @@ export const Listings = () => {
                         )
                     })
                 ) : (
-                    <ActivityIndicator size="large" color="#14213D" />
+                    <Loader color="#14213D" />
                 )}
             </View>
         </ScrollView>
