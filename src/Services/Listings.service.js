@@ -1,10 +1,16 @@
 import axios from 'axios'
-import { API_URL } from '@env'
-
+import { apiUrl } from '../../url'
 export async function getListings() {
-    let url = 'http://0.0.0.0:3000/listings'
+    let axiosConfig = {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    }
+    let url = `${apiUrl}listings`
 
-    return axios.get(url).then((res) => {
+    return axios.get(url, axiosConfig).then((res) => {
+        console.log(url)
+        console.log(res)
         return res.data
     })
 }

@@ -25,7 +25,6 @@ export const Listings = () => {
             setListings(res)
             setIsLoading(false)
             setIsMounted(true)
-            console.log('mounted')
         })
     }, [])
 
@@ -35,7 +34,6 @@ export const Listings = () => {
             <View style={ListingsStyle.flex}>
                 {isMounted === true ? (
                     listings.map((item) => {
-                        console.log(item.images[0])
                         return (
                             <View style={ListingsStyle.adsContainer}>
                                 <View style={ListingsStyle.ad}>
