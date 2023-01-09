@@ -9,6 +9,10 @@ import { Balance } from '../Components/Balance'
 import { ProfileStyle } from '../Styles/Profile'
 
 export const Profile = ({ navigation }) => {
+    function handleLogout() {
+        navigation.navigate('login')
+    }
+
     return (
         <View style={ProfileStyle.container}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -61,10 +65,27 @@ export const Profile = ({ navigation }) => {
                         style={ProfileStyle.rightArrow}
                     />
                 </TouchableOpacity>
-                <TouchableOpacity style={ProfileStyle.mainMenunuItem}>
+                <TouchableOpacity
+                    style={ProfileStyle.mainMenunuItem}
+                    onPress={() => {
+                        handleLogout()
+                    }}
+                >
                     <Text style={ProfileStyle.menuText}>
                         Créer un autre compte
                     </Text>
+                    <Image
+                        source={rightArrow}
+                        style={ProfileStyle.rightArrow}
+                    />
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={ProfileStyle.mainMenunuItem}
+                    onPress={() => {
+                        handleLogout()
+                    }}
+                >
+                    <Text style={ProfileStyle.menuText}>Se déconnecter</Text>
                     <Image
                         source={rightArrow}
                         style={ProfileStyle.rightArrow}

@@ -28,16 +28,16 @@ const App = () => {
         <NavigationContainer>
             <Stack.Navigator>
                 <Stack.Screen
-                    name="home"
-                    component={Home}
+                    name="login"
+                    component={Login}
                     options={{
                         animation: 'slide_from_right',
                         headerShown: false,
                     }}
                 />
                 <Stack.Screen
-                    name="login"
-                    component={Login}
+                    name="home"
+                    component={Home}
                     options={{
                         animation: 'slide_from_right',
                         headerShown: false,

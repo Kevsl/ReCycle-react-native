@@ -15,8 +15,8 @@ import greenCheck from '../Assets/greenCheck.png'
 import { loginFunction } from '../Services/Auth.service'
 
 export const Login = ({ navigation }) => {
-    const [email, setEmail] = useState('kevin@gmail.com')
-    const [password, setPassword] = useState('Toto123&')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     const [emailOk, setEmailOk] = useState(false)
     const [passOK, setPassOk] = useState(false)
@@ -27,7 +27,7 @@ export const Login = ({ navigation }) => {
         return checkEmail(email) === true && checkPassword(password) === true
             ? (setIsLoading(true),
               loginFunction(email, password).then((res) => {
-                  if (res.status === 200) {
+                  if (res.data) {
                       setIsLoading(false)
                       navigation.navigate('home')
                   } else {

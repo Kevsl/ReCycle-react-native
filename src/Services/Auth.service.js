@@ -1,14 +1,23 @@
 import axios from 'axios'
-import { API_URL } from '@env'
+import { apiUrl } from '../../url'
 import { storeData } from '../Utils/localStorage'
 
 export async function loginFunction(email, password) {
-    let url = 'http://0.0.0.0/api/login_check'
+    let url = `${apiUrl}login`
+    let axiosConfig = {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    }
 
-    return axios.post(url, { email: email, password: password }).then((res) => {
-        storeData('token', res.data.token)
-        return res
-    })
+    return axios
+        .get(url, axiosConfig, { email: email, password: password })
+        .then((res) => {
+            storeData('token', res.data.token)
+            storeData('avatar', res.data.avatar)
+            storeData('username', res.data.username)
+            return res
+        })
 }
 
 export async function registerFunction(email, password, firstName) {

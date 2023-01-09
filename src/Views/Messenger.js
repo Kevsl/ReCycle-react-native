@@ -27,7 +27,6 @@ export const Messenger = ({ navigation }) => {
     return (
         <View style={MessengerPageStyle.container}>
             <GoBackArrow />
-
             <View style={MessengerPageStyle.titleContainer}>
                 <Text style={MessengerPageStyle.title}>Messagerie </Text>
             </View>
@@ -50,7 +49,9 @@ export const Messenger = ({ navigation }) => {
                         key={data.id}
                         onPress={() =>
                             navigation.navigate('chat', {
-                                conversationId: '123',
+                                userId: data.id,
+                                avatar: data.avatar,
+                                name: data.contact,
                             })
                         }
                     >
@@ -82,7 +83,6 @@ export const Messenger = ({ navigation }) => {
                     </TouchableOpacity>
                 ))}
             </ScrollView>
-
             <NavBar navigation={navigation} />
         </View>
     )
