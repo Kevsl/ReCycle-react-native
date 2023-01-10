@@ -1,18 +1,12 @@
 import { NavBar } from '../Components/NavBar'
 import React, { useState, useEffect } from 'react'
-import {
-    Text,
-    View,
-    Image,
-    TouchableOpacity,
-    ActivityIndicator,
-    ScrollView,
-} from 'react-native'
+import { Text, View, Image, TouchableOpacity, ScrollView } from 'react-native'
 import greenSearch from '../Assets/greenSearch.png'
-import { MessengerPageStyle } from '../Styles/Messenger'
+import { MessengerPageStyle } from '../Styles/Views/Messenger'
 import { TextInput } from 'react-native-gesture-handler'
 import { getConversations } from '../Services/ConversationsService'
 import { GoBackArrow } from '../Components/GoBackArrow'
+
 export const Messenger = ({ navigation }) => {
     const [Datas, setDatas] = useState([])
 

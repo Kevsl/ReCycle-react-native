@@ -1,11 +1,10 @@
-import { Text, View, TouchableOpacity, Image } from 'react-native'
-import { NavBarStyle } from '../Styles/NavBarStyle'
+import { View, TouchableOpacity, Image } from 'react-native'
+import { NavBarStyle } from '../Styles/Components/NavBarStyle'
 import home from '../Assets/home.png'
 import search from '../Assets/search.png'
 import messages from '../Assets/messages.png'
 import add from '../Assets/add.png'
 import account from '../Assets/account.png'
-import React from 'react'
 
 export const NavBar = (props) => {
     const navigation = props.navigation

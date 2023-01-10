@@ -1,6 +1,6 @@
-import { Text, Image, View, TouchableOpacity } from 'react-native'
+import { Image, TouchableOpacity } from 'react-native'
 import GoBackArrowImage from '../Assets/goBackArrow.png'
-import { GoBackArrowStyle } from '../Styles/GoBackArrow'
+import { GoBackArrowStyle } from '../Styles/Components/GoBackArrow'
 export const GoBackArrow = ({ navigation }) => {
     return (
         <TouchableOpacity onPress={() => navigation.goBack()}>

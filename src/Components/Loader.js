@@ -1,4 +1,4 @@
-import { LoaderStyle } from '../Styles/LoaderStyle'
+import { LoaderStyle } from '../Styles/Components/LoaderStyle'
 import { View, ActivityIndicator } from 'react-native'
 
 export const Loader = ({ color }) => {

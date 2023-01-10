@@ -8,11 +8,13 @@ import {
     ActivityIndicator,
 } from 'react-native'
 import { checkEmail, checkPassword } from '../Utils/regex'
-import { LoginStyle } from '../Styles/Login'
+import { LoginStyle } from '../Styles/Views/Login'
 import goBackArrow from '../Assets/goBackArrow.png'
 import redCross from '../Assets/redCross.png'
 import greenCheck from '../Assets/greenCheck.png'
 import { loginFunction } from '../Services/Auth.service'
+import { getData } from '../Utils/localStorage'
+import { GoBackArrow } from '../Components/GoBackArrow'
 
 export const Login = ({ navigation }) => {
     const [email, setEmail] = useState('')
@@ -21,7 +23,12 @@ export const Login = ({ navigation }) => {
     const [emailOk, setEmailOk] = useState(false)
     const [passOK, setPassOk] = useState(false)
 
-    useEffect(() => {}, [])
+    useEffect(() => {
+        const token = getData('token')
+        if (token && token !== 'undefined') {
+            navigation.navigate('home')
+        }
+    }, [email])
 
     async function handleLogin() {
         return checkEmail(email) === true && checkPassword(password) === true
@@ -46,13 +53,7 @@ export const Login = ({ navigation }) => {
 
     return (
         <View style={LoginStyle.container}>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
-                <Image
-                    source={goBackArrow}
-                    style={LoginStyle.goBackArrow}
-                    accessibilityLabel="Retourner sur la page précèdente"
-                />
-            </TouchableOpacity>
+            <GoBackArrow />
             <View style={LoginStyle.titleContainer}>
                 <Text style={LoginStyle.title}>Bonjour</Text>
                 <Text style={LoginStyle.subTitle}>

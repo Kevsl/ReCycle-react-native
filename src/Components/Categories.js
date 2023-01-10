@@ -1,15 +1,9 @@
 import { getCategories } from '../Services/Categories.service'
 import React, { useState, useEffect } from 'react'
-import {
-    Text,
-    View,
-    Image,
-    TextInput,
-    TouchableOpacity,
-    ActivityIndicator,
-} from 'react-native'
+import { Text, View, Image, ActivityIndicator } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
-import { CategoriesStyle } from '../Styles/Categories'
+import { CategoriesStyle } from '../Styles/Components/Categories'
+
 export const Categories = () => {
     const [datas, setDatas] = useState([])
     const [isLoading, setIsLoading] = useState(false)

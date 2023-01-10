@@ -1,96 +1,68 @@
 import { NavBar } from '../Components/NavBar'
 import React, { useState, useEffect } from 'react'
 import { Text, View, Image, TouchableOpacity } from 'react-native'
-import goBackArrow from '../Assets/goBackArrow.png'
 import englandPm from '../Assets/englishpm.jpeg'
 import pen from '../Assets/pen.png'
-import rightArrow from '../Assets/rightArrow.png'
+import { GoBackArrow } from '../Components/GoBackArrow'
 import { Balance } from '../Components/Balance'
-import { ProfileStyle } from '../Styles/Profile'
+import { ProfileStyle } from '../Styles/Views/Profile'
+import { clearAll, getData } from '../Utils/localStorage'
+import { ProfilMenuItem } from '../Components/ProfilMenuItem'
 
 export const Profile = ({ navigation }) => {
-    function handleLogout() {
-        navigation.navigate('login')
-    }
+    const [userName, setUserName] = useState('')
+    const [avatar, setAvatar] = useState('')
+
+    useEffect(() => {
+        getData('avatar').then((res) => setAvatar(res))
+        getData('username').then((res) => setUserName(res))
+    })
 
     return (
         <View style={ProfileStyle.container}>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
-                <Image
-                    source={goBackArrow}
-                    style={ProfileStyle.goBackArrow}
-                    accessibilityLabel="Retourner sur la page précèdente"
-                />
-            </TouchableOpacity>
+            <GoBackArrow navigation={navigation} />
             <View style={ProfileStyle.titleContainer}>
                 <Text style={ProfileStyle.title}>Profil </Text>
             </View>
 
             <View style={ProfileStyle.infoContainer}>
-                <View style={ProfileStyle.imageContainer}>
-                    <Image
-                        source={englandPm}
-                        style={ProfileStyle.profilePic}
-                        accessibilityLabel="Retourner sur la page précèdente"
-                    />
-                    <TouchableOpacity
-                        style={ProfileStyle.imageEditIcon}
-                        onPress={console.log('Une bonne chose de faite ! ')}
-                    >
-                        <Image style={ProfileStyle.penIcon} source={pen} />
-                    </TouchableOpacity>
-                </View>
-                <Text style={ProfileStyle.name}>John Doe</Text>
-                <Text style={ProfileStyle.mail}>johndoe@email.com </Text>
+                {avatar && userName && (
+                    <View style={ProfileStyle.imageContainer}>
+                        <Image
+                            source={{ uri: avatar }}
+                            style={ProfileStyle.profilePic}
+                            accessibilityLabel="Retourner sur la page précèdente"
+                        />
+                        <TouchableOpacity
+                            style={ProfileStyle.imageEditIcon}
+                            onPress={console.log('Une bonne chose de faite ! ')}
+                        >
+                            <Image style={ProfileStyle.penIcon} source={pen} />
+                        </TouchableOpacity>
+                    </View>
+                )}
+                <Text style={ProfileStyle.name}>{userName}</Text>
+                <Text style={ProfileStyle.mail}>{userName}@email.com </Text>
             </View>
             <View style={ProfileStyle.mainMenu}>
-                <TouchableOpacity style={ProfileStyle.mainMenunuItem}>
-                    <Text style={ProfileStyle.menuText}>
-                        Modifier mes informations
-                    </Text>
-                    <Image
-                        source={rightArrow}
-                        style={ProfileStyle.rightArrow}
-                    />
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={ProfileStyle.mainMenunuItem}
-                    onPress={() => {
-                        navigation.navigate('my-ads')
-                    }}
-                >
-                    <Text style={ProfileStyle.menuText}>Mes annonces</Text>
-                    <Image
-                        source={rightArrow}
-                        style={ProfileStyle.rightArrow}
-                    />
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={ProfileStyle.mainMenunuItem}
-                    onPress={() => {
-                        handleLogout()
-                    }}
-                >
-                    <Text style={ProfileStyle.menuText}>
-                        Créer un autre compte
-                    </Text>
-                    <Image
-                        source={rightArrow}
-                        style={ProfileStyle.rightArrow}
-                    />
-                </TouchableOpacity>
-                <TouchableOpacity
-                    style={ProfileStyle.mainMenunuItem}
-                    onPress={() => {
-                        handleLogout()
-                    }}
-                >
-                    <Text style={ProfileStyle.menuText}>Se déconnecter</Text>
-                    <Image
-                        source={rightArrow}
-                        style={ProfileStyle.rightArrow}
-                    />
-                </TouchableOpacity>
+                <ProfilMenuItem
+                    navigation={navigation}
+                    url="home"
+                    title="Modifier mes informations"
+                    logout="false"
+                />
+                <ProfilMenuItem
+                    navigation={navigation}
+                    url="my-ads"
+                    title="Mes annonces"
+                    logout="false"
+                />
+                <ProfilMenuItem
+                    navigation={navigation}
+                    url="login"
+                    title="Se déconnecter"
+                    logout="true"
+                />
             </View>
             <Balance />
             <View style={ProfileStyle.navBar}>

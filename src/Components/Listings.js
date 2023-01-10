@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Text, View, Image, TouchableOpacity } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
-import { ListingsStyle } from '../Styles/Listings'
+import { ListingsStyle } from '../Styles/Components/Listings'
 import { getListings } from '../Services/Listings.service'
 
 import redHeart from '../Assets/redHeart.png'
@@ -23,8 +23,11 @@ export const Listings = () => {
                 {isMounted === true ? (
                     listings.map((item) => {
                         return (
-                            <View style={ListingsStyle.adsContainer}>
-                                <View style={ListingsStyle.ad} key={item.id}>
+                            <View
+                                style={ListingsStyle.adsContainer}
+                                key={item.id}
+                            >
+                                <View style={ListingsStyle.ad}>
                                     <Image
                                         source={{
                                             uri: item.images[0],

@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react'
 import { Text, Image, View, TouchableOpacity } from 'react-native'
 import filters from '../Assets/filters.png'
-import { FiltersMenuStyle } from '../Styles/FiltersMenu'
+import { FiltersMenuStyle } from '../Styles/Components/FiltersMenu'
 export const FilterMenu = ({ navigation }) => {
     return (
         <View style={FiltersMenuStyle.secondMenu}>

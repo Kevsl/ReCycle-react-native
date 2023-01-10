@@ -1,17 +1,6 @@
 import { NavBar } from '../Components/NavBar'
-import React, { useState, useEffect } from 'react'
-import {
-    Text,
-    View,
-    Image,
-    TouchableOpacity,
-    ActivityIndicator,
-    ScrollView,
-} from 'react-native'
-import goBackArrow from '../Assets/goBackArrow.png'
-import filters from '../Assets/filters.png'
-
-import { HomeStyle } from '../Styles/Home'
+import { Text, View } from 'react-native'
+import { HomeStyle } from '../Styles/Views/Home'
 import { Listings } from '../Components/Listings'
 import { FilterMenu } from '../Components/FilterMenu'
 import { GoBackArrow } from '../Components/GoBackArrow'

@@ -1,18 +1,7 @@
 import { NavBar } from '../Components/NavBar'
 import React, { useState, useEffect } from 'react'
-import {
-    Text,
-    View,
-    Image,
-    TouchableOpacity,
-    ActivityIndicator,
-    ScrollView,
-} from 'react-native'
-import goBackArrow from '../Assets/goBackArrow.png'
-import greenSearch from '../Assets/greenSearch.png'
-import englishpm from '../Assets/englishpm.jpeg'
-
-import { ChatPageStyle } from '../Styles/Chat'
+import { Text, View, Image, ScrollView } from 'react-native'
+import { ChatPageStyle } from '../Styles/Views/Chat'
 import { TextInput } from 'react-native-gesture-handler'
 import { getSpecificConversation } from '../Services/ConversationsService'
 import { GoBackArrow } from '../Components/GoBackArrow'
