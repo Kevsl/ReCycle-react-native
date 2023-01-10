@@ -7,7 +7,6 @@
  */
 
 import React from 'react'
-import { StyleSheet } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
@@ -16,7 +15,6 @@ import { Profile } from './Views/Profile'
 import { CreateAd } from './Views/Create-ad'
 import { Login } from './Views/Login'
 import { Messenger } from './Views/Messenger'
-import { SearchPage } from './Views/Search'
 import { Register } from './Views/Register'
 import { Chat } from './Views/Chat'
 import { MyAds } from './Views/MyAds'

@@ -12,6 +12,7 @@ import { RegisterStyle } from '../Styles/Views/Register'
 import redCross from '../Assets/redCross.png'
 import greenCheck from '../Assets/greenCheck.png'
 import { GoBackArrow } from '../Components/GoBackArrow'
+import { getData } from '../Utils/localStorage'
 
 export const Register = ({ navigation }) => {
     const [email, setEmail] = useState('')
@@ -52,6 +53,12 @@ export const Register = ({ navigation }) => {
             navigation.navigate('home')
         }
     }
+    useEffect(() => {
+        const token = getData('token')
+        if (token && token !== 'undefined') {
+            navigation.navigate('home')
+        }
+    }, [email])
 
     return (
         <View style={RegisterStyle.container}>

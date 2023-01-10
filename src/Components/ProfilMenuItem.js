@@ -2,7 +2,7 @@ import rightArrow from '../Assets/rightArrow.png'
 import { Text, Image, TouchableOpacity } from 'react-native'
 import { ProfileMenuStyle } from '../Styles/Components/ProfileMenu'
 import { useEffect } from 'react'
-import { clearAll, getData } from '../Utils/localStorage'
+import { clearAll } from '../Utils/localStorage'
 export const ProfilMenuItem = ({ navigation, title, url, logout }) => {
     useEffect(() => {
         if (logout === true) {
