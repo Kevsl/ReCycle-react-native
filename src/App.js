@@ -1,3 +1,4 @@
+/* eslint-disable semi */
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -18,80 +19,93 @@ import { Messenger } from './Views/Messenger'
 import { Register } from './Views/Register'
 import { Chat } from './Views/Chat'
 import { MyAds } from './Views/MyAds'
+import { Provider } from 'react-redux'
+import Store from './store'
+import Listing from './Views/Listing'
 
 const App = () => {
     const Stack = createNativeStackNavigator()
 
     return (
-        <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen
-                    name="login"
-                    component={Login}
-                    options={{
-                        animation: 'slide_from_right',
-                        headerShown: false,
-                    }}
-                />
-                <Stack.Screen
-                    name="home"
-                    component={Home}
-                    options={{
-                        animation: 'slide_from_right',
-                        headerShown: false,
-                    }}
-                />
-                <Stack.Screen
-                    name="my-ads"
-                    component={MyAds}
-                    options={{
-                        animation: 'slide_from_right',
-                        headerShown: false,
-                    }}
-                />
+        <Provider store={Store}>
+            <NavigationContainer>
+                <Stack.Navigator>
+                    <Stack.Screen
+                        name="login"
+                        component={Login}
+                        options={{
+                            animation: 'slide_from_right',
+                            headerShown: false,
+                        }}
+                    />
+                    <Stack.Screen
+                        name="home"
+                        component={Home}
+                        options={{
+                            animation: 'slide_from_right',
+                            headerShown: false,
+                        }}
+                    />
+                    <Stack.Screen
+                        name="my-ads"
+                        component={MyAds}
+                        options={{
+                            animation: 'slide_from_right',
+                            headerShown: false,
+                        }}
+                    />
 
-                <Stack.Screen
-                    name="profile"
-                    component={Profile}
-                    options={{
-                        animation: 'slide_from_right',
-                        headerShown: false,
-                    }}
-                />
-                <Stack.Screen
-                    name="create-ad"
-                    component={CreateAd}
-                    options={{
-                        animation: 'slide_from_right',
-                        headerShown: false,
-                    }}
-                />
-                <Stack.Screen
-                    name="messenger"
-                    component={Messenger}
-                    options={{
-                        animation: 'slide_from_right',
-                        headerShown: false,
-                    }}
-                />
-                <Stack.Screen
-                    name="register"
-                    component={Register}
-                    options={{
-                        animation: 'slide_from_right',
-                        headerShown: false,
-                    }}
-                />
-                <Stack.Screen
-                    name="chat"
-                    component={Chat}
-                    options={{
-                        animation: 'slide_from_right',
-                        headerShown: false,
-                    }}
-                />
-            </Stack.Navigator>
-        </NavigationContainer>
+                    <Stack.Screen
+                        name="profile"
+                        component={Profile}
+                        options={{
+                            animation: 'slide_from_right',
+                            headerShown: false,
+                        }}
+                    />
+                    <Stack.Screen
+                        name="create-ad"
+                        component={CreateAd}
+                        options={{
+                            animation: 'slide_from_right',
+                            headerShown: false,
+                        }}
+                    />
+                    <Stack.Screen
+                        name="messenger"
+                        component={Messenger}
+                        options={{
+                            animation: 'slide_from_right',
+                            headerShown: false,
+                        }}
+                    />
+                    <Stack.Screen
+                        name="register"
+                        component={Register}
+                        options={{
+                            animation: 'slide_from_right',
+                            headerShown: false,
+                        }}
+                    />
+                    <Stack.Screen
+                        name="chat"
+                        component={Chat}
+                        options={{
+                            animation: 'slide_from_right',
+                            headerShown: false,
+                        }}
+                    />
+                    <Stack.Screen
+                        name="listing"
+                        component={Listing}
+                        options={{
+                            animation: 'slide_from_right',
+                            headerShown: false,
+                        }}
+                    />
+                </Stack.Navigator>
+            </NavigationContainer>
+        </Provider>
     )
 }
 

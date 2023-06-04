@@ -35,8 +35,8 @@ export const ListingsStyle = (StyleSheet.createstyle = StyleSheet.create({
         backgroundColor: '#EAF2FF',
         fontSize: 14,
         height: '35%',
-        paddingTop: '5%',
         textAlign: 'center',
+        marginVertical: '5%',
     },
     adCity: {
         fontSize: 12,

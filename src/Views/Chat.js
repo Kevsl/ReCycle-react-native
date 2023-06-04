@@ -14,6 +14,7 @@ export const Chat = ({ route, navigation }) => {
     const userAvatar = route.params.avatar
     const userName = route.params.name
     const [ownerAvatar, seOwnerAvatar] = useState('')
+    const ownerId = '412'
     useEffect(() => {
         getData('avatar').then((res) => {
             seOwnerAvatar(res)

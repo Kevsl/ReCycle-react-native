@@ -1,3 +1,4 @@
+/* eslint-disable semi */
 import React, { useState, useEffect } from 'react'
 import {
     Text,
@@ -9,7 +10,6 @@ import {
 } from 'react-native'
 import { checkEmail, checkPassword } from '../Utils/regex'
 import { LoginStyle } from '../Styles/Views/Login'
-import goBackArrow from '../Assets/goBackArrow.png'
 import redCross from '../Assets/redCross.png'
 import greenCheck from '../Assets/greenCheck.png'
 import { loginFunction } from '../Services/Auth.service'
@@ -22,23 +22,39 @@ export const Login = ({ navigation }) => {
     const [isLoading, setIsLoading] = useState(false)
     const [emailOk, setEmailOk] = useState(false)
     const [passOK, setPassOk] = useState(false)
-
-    useEffect(() => {
-        const token = getData('token')
-        if (token && token !== 'undefined') {
-            navigation.navigate('home')
-        }
-    }, [email])
+    const [errorMessage, setErrorMessage] = useState('')
 
     async function handleLogin() {
         return checkEmail(email) === true && checkPassword(password) === true
             ? (setIsLoading(true),
               loginFunction(email, password).then((res) => {
-                  if (res.data) {
+                  if (res.status === 200) {
                       setIsLoading(false)
                       navigation.navigate('home')
-                  } else {
-                      alert('Problème de connexion')
+                  }
+                  if (res.response.status) {
+                      switch (res.response.status) {
+                          case 200:
+                              navigation.navigate('/connexion')
+                              setIsLoading(false)
+                              break
+                          case 500:
+                              setErrorMessage('Problème avec le serveur')
+                              setIsLoading(false)
+
+                              break
+                          case 400:
+                              setErrorMessage('Problème avec votre connexion')
+                              setIsLoading(false)
+
+                              break
+                          case 401:
+                              setErrorMessage('Problème avec vos identifiants')
+                              setIsLoading(false)
+                              break
+                          default:
+                              setIsLoading(false)
+                      }
                   }
               }))
             : null
@@ -80,9 +96,9 @@ export const Login = ({ navigation }) => {
                                 : LoginStyle.TextInput
                         }
                         placeholderTextColor="#000"
-                        onChangeText={(email) => {
-                            handleEmail(email)
-                            setEmail(email)
+                        onChangeText={(e) => {
+                            handleEmail(e)
+                            setEmail(e)
                         }}
                     />
                     {emailOk === true ? (
@@ -111,10 +127,9 @@ export const Login = ({ navigation }) => {
                                 : LoginStyle.TextInput
                         }
                         placeholderTextColor="#000"
-                        // secureTextEntry={true}
-                        onChangeText={(password) => {
-                            handlePass(password)
-                            setPassword(password)
+                        onChangeText={(p) => {
+                            handlePass(p)
+                            setPassword(p)
                         }}
                         secureTextEntry={true}
                     />
@@ -156,6 +171,7 @@ export const Login = ({ navigation }) => {
                     style={LoginStyle.loading}
                 />
             ) : null}
+            {errorMessage && <Text>{errorMessage}</Text>}
         </View>
     )
 }

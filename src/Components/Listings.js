@@ -1,21 +1,16 @@
+/* eslint-disable semi */
 import React, { useState, useEffect } from 'react'
 import { Text, View, Image, TouchableOpacity } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { ListingsStyle } from '../Styles/Components/Listings'
-import { getListings } from '../Services/Listings.service'
-
-import redHeart from '../Assets/redHeart.png'
+import noPhoto from '../Assets/no-photo.png'
 import { Loader } from './Loader'
-export const Listings = () => {
-    const [listings, setListings] = useState([])
-    const [isMounted, setIsMounted] = useState(false)
+import { useDispatch } from 'react-redux'
+import { selectListing } from '../redux/reducers/navigation'
 
-    useEffect(() => {
-        getListings().then((res) => {
-            setListings(res)
-            setIsMounted(true)
-        })
-    }, [])
+export const Listings = ({ navigation, listings, isMounted }) => {
+    //   const dailyServiceTime = useSelector(getDailyServiceTime)
+    const dispatch = useDispatch()
 
     return (
         <ScrollView style={ListingsStyle.AdScrollContainer}>
@@ -27,10 +22,18 @@ export const Listings = () => {
                                 style={ListingsStyle.adsContainer}
                                 key={item.id}
                             >
-                                <View style={ListingsStyle.ad}>
+                                <TouchableOpacity
+                                    style={ListingsStyle.ad}
+                                    onPress={() => {
+                                        navigation.navigate('listing')
+                                        dispatch(selectListing(item.id))
+                                    }}
+                                >
                                     <Image
                                         source={{
-                                            uri: item.images[0],
+                                            uri: item.listingCoverImage
+                                                ? item.listingCoverImage
+                                                : noPhoto,
                                         }}
                                         style={ListingsStyle.adImage}
                                     />
@@ -41,14 +44,8 @@ export const Listings = () => {
                                         <Text style={ListingsStyle.adCity}>
                                             {item.city}
                                         </Text>
-                                        <TouchableOpacity>
-                                            <Image
-                                                source={redHeart}
-                                                style={ListingsStyle.heart}
-                                            />
-                                        </TouchableOpacity>
                                     </View>
-                                </View>
+                                </TouchableOpacity>
                             </View>
                         )
                     })

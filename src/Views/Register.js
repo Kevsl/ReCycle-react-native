@@ -58,7 +58,7 @@ export const Register = ({ navigation }) => {
         if (token && token !== 'undefined') {
             navigation.navigate('home')
         }
-    }, [email])
+    }, [email, navigation])
 
     return (
         <View style={RegisterStyle.container}>
