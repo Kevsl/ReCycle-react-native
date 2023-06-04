@@ -1,6 +1,11 @@
-/* eslint-disable semi */
-import { getData } from './localStorage'
+import { useToken } from './useToken'
 
-export const config = {
-    headers: { Authorization: `Bearer ${getData('token')}` },
+export const useHeaders = () => {
+    const token = useToken()
+
+    const headers = {
+        Authorization: `Bearer ${token}`,
+    }
+
+    return headers
 }

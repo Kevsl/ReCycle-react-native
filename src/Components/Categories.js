@@ -12,7 +12,6 @@ export const Categories = () => {
         setIsLoading(true)
         getCategories().then((res) => {
             setDatas(res)
-            console.log(res.data)
             setIsLoading(false)
         })
     }, [])

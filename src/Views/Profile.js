@@ -64,7 +64,7 @@ export const Profile = ({ navigation }) => {
                     logout="true"
                 />
             </View>
-            <Balance />
+            {/* <Balance /> */}
             <View style={ProfileStyle.navBar}>
                 <NavBar navigation={navigation} />
             </View>

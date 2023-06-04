@@ -3,6 +3,7 @@ import axios from 'axios'
 import { apiUrl } from '../../url'
 import { storeData } from '../Utils/localStorage'
 import { API_URL } from '@env'
+import jwt_decode from 'jwt-decode'
 
 export async function loginFunction(email, password) {
     let url = `${apiUrl}api/login_check`
@@ -16,8 +17,8 @@ export async function loginFunction(email, password) {
         .post(url, { username: email, password: password }, axiosConfig)
         .then((res) => {
             storeData('token', res.data.token)
-            storeData('avatar', res.data.avatar)
-            storeData('username', res.data.username)
+            let id = jwt_decode(res.data.token).id
+            storeData('id', id.toString())
             return res
         })
 }

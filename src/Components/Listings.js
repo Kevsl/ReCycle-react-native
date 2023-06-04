@@ -15,7 +15,7 @@ export const Listings = ({ navigation, listings, isMounted }) => {
     return (
         <ScrollView style={ListingsStyle.AdScrollContainer}>
             <View style={ListingsStyle.flex}>
-                {isMounted === true ? (
+                {listings ? (
                     listings.map((item) => {
                         return (
                             <View
@@ -33,6 +33,8 @@ export const Listings = ({ navigation, listings, isMounted }) => {
                                         source={{
                                             uri: item.listingCoverImage
                                                 ? item.listingCoverImage
+                                                : item.image
+                                                ? item.image[0]
                                                 : noPhoto,
                                         }}
                                         style={ListingsStyle.adImage}

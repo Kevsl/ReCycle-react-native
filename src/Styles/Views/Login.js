@@ -128,4 +128,9 @@ export const LoginStyle = (StyleSheet.createstyle = StyleSheet.create({
         fontFamily: 'baloo',
         marginVertical: 0,
     },
+    errorMessage: {
+        color: '#DA2D2D',
+        fontSize: 14,
+        textAlign: 'center',
+    },
 }))

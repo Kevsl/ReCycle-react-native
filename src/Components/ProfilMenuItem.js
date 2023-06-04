@@ -3,13 +3,14 @@ import { Text, Image, TouchableOpacity } from 'react-native'
 import { ProfileMenuStyle } from '../Styles/Components/ProfileMenu'
 import { useEffect } from 'react'
 import { clearAll } from '../Utils/localStorage'
+import React from 'react'
 export const ProfilMenuItem = ({ navigation, title, url, logout }) => {
     useEffect(() => {
         if (logout === true) {
             clearAll()
             navigation.navigate('login')
         }
-    }, [])
+    }, [logout, navigation])
 
     return (
         <TouchableOpacity

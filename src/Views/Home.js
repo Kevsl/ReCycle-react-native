@@ -12,14 +12,16 @@ export const Home = ({ navigation }) => {
     const [isMounted, setIsMounted] = useState(false)
 
     useEffect(() => {
+        console.log('va charger')
         getListings().then((res) => {
             setListings(res)
             setIsMounted(true)
         })
     }, [])
+
     return (
         <View style={HomeStyle.container}>
-            <GoBackArrow />
+            <GoBackArrow navigation={navigation} />
             <View style={HomeStyle.titleContainer}>
                 <Text style={HomeStyle.title}>Mes annonces </Text>
             </View>

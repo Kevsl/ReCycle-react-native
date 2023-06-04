@@ -18,6 +18,7 @@ export const ListingsStyle = (StyleSheet.createstyle = StyleSheet.create({
         flex: 1,
         borderTopEndRadius: 16,
         borderTopStartRadius: 16,
+        borderRadius: 16,
     },
     ad: {
         flex: 1,

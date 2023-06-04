@@ -1,9 +1,13 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import { useSelector } from 'react-redux'
+import { getCurrentToken } from '../redux/reducers/navigation'
 
 export const storeData = async (key, value) => {
     try {
         await AsyncStorage.setItem(key, value)
-    } catch (e) {}
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 export const getData = async (key) => {
@@ -11,7 +15,7 @@ export const getData = async (key) => {
         const value = await AsyncStorage.getItem(key)
         return value
     } catch (e) {
-        // error reading value
+        console.log(e)
     }
 }
 

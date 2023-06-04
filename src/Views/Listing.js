@@ -5,9 +5,13 @@ import { GoBackArrow } from '../Components/GoBackArrow'
 import React, { useState, useEffect } from 'react'
 import { getListing } from '../Services/Listings.service'
 import { useSelector } from 'react-redux'
-import { getCurrentListingId } from '../redux/reducers/navigation'
+import {
+    getCurrentListingId,
+    setIsNewMessage,
+} from '../redux/reducers/navigation'
 import chevronLeft from '../Assets/chevron-left.png'
 import chevronRight from '../Assets/chevron-right.png'
+import { useDispatch } from 'react-redux'
 
 const Listing = ({ navigation }) => {
     const [listingData, setListingData] = useState([])
@@ -15,10 +19,10 @@ const Listing = ({ navigation }) => {
     const id = useSelector(getCurrentListingId)
     const [isLoading, setIsLoading] = useState(false)
     const [isMounted, setIsMounted] = useState(false)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         getListing(id).then((res) => {
-            console.log(res)
             setIsLoading(true)
             setListingData(res)
             setIsLoading(false)
@@ -44,7 +48,7 @@ const Listing = ({ navigation }) => {
 
     return (
         <View style={ListingStyle.container}>
-            <GoBackArrow />
+            <GoBackArrow navigation={navigation} />
             <View>
                 {isLoading ? (
                     <View>
@@ -76,7 +80,7 @@ const Listing = ({ navigation }) => {
                                     <TouchableOpacity
                                         style={ListingStyle.rightButton}
                                         onPress={() => {
-                                            handleCaroussel('+')
+                                            handleCaroussel('right')
                                         }}
                                     >
                                         <Image
@@ -128,7 +132,8 @@ const Listing = ({ navigation }) => {
                                         <TouchableOpacity
                                             style={ListingStyle.contactButton}
                                             onPress={() => {
-                                                navigation.navigate('/messages')
+                                                navigation.navigate('chat')
+                                                dispatch(setIsNewMessage(true))
                                             }}
                                         >
                                             <Text
@@ -183,7 +188,7 @@ const Listing = ({ navigation }) => {
                         Problème de chargement, veuillez réessayer plus tard
                     </Text>
                 )}
-                <NavBar />
+                <NavBar navigation={navigation} />
             </View>
         </View>
     )

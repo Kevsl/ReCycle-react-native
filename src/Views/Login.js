@@ -13,8 +13,10 @@ import { LoginStyle } from '../Styles/Views/Login'
 import redCross from '../Assets/redCross.png'
 import greenCheck from '../Assets/greenCheck.png'
 import { loginFunction } from '../Services/Auth.service'
-import { getData } from '../Utils/localStorage'
 import { GoBackArrow } from '../Components/GoBackArrow'
+import jwt_decode from 'jwt-decode'
+import { useDispatch } from 'react-redux'
+import { setToken, setUserId } from '../redux/reducers/navigation'
 
 export const Login = ({ navigation }) => {
     const [email, setEmail] = useState('')
@@ -23,11 +25,15 @@ export const Login = ({ navigation }) => {
     const [emailOk, setEmailOk] = useState(false)
     const [passOK, setPassOk] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
+    const dispatch = useDispatch()
 
     async function handleLogin() {
         return checkEmail(email) === true && checkPassword(password) === true
             ? (setIsLoading(true),
               loginFunction(email, password).then((res) => {
+                  dispatch(setToken(res.data.token))
+                  dispatch(setUserId(jwt_decode(res.data.token).id))
+
                   if (res.status === 200) {
                       setIsLoading(false)
                       navigation.navigate('home')
@@ -66,6 +72,14 @@ export const Login = ({ navigation }) => {
     function handlePass(value) {
         checkPassword(value) === true ? setPassOk(true) : setPassOk(false)
     }
+
+    // useEffect(() => {
+    //     getData('token').then((res) => {
+    //         if (res !== undefined) {
+    //             navigation.navigate('home')
+    //         }
+    //     })
+    // })
 
     return (
         <View style={LoginStyle.container}>
@@ -171,7 +185,9 @@ export const Login = ({ navigation }) => {
                     style={LoginStyle.loading}
                 />
             ) : null}
-            {errorMessage && <Text>{errorMessage}</Text>}
+            {errorMessage && (
+                <Text style={LoginStyle.errorMessage}>{errorMessage}</Text>
+            )}
         </View>
     )
 }

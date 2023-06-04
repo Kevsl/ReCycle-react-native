@@ -24,13 +24,18 @@ export const ChatPageStyle = (StyleSheet.createstyle = StyleSheet.create({
     inputContainer: {
         display: 'flex',
         flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
         backgroundColor: '#F8F9FE',
         width: '90%',
         marginHorizontal: '5%',
+        marginBottom: '5%',
         paddingHorizontal: '10%',
-        height: 30,
         borderRadius: 25,
         marginTop: '10%',
+        height: 50,
+        borderColor: '#6A6F7D',
+        borderWidth: 2,
     },
     searchIcon: {
         width: 30,
@@ -40,7 +45,7 @@ export const ChatPageStyle = (StyleSheet.createstyle = StyleSheet.create({
     scrollView: {
         width: '90%',
         marginHorizontal: '5%',
-        marginVertical: '5%',
+        marginTop: '5%',
     },
     messageContainer: {
         display: 'flex',
@@ -77,6 +82,9 @@ export const ChatPageStyle = (StyleSheet.createstyle = StyleSheet.create({
         marginRight: 'auto',
         flexDirection: 'column',
         alignItems: 'flex-start',
+        paddingLeft: 15,
+        paddingVertical: 5,
+
         marginHorizontal: '5%',
         width: '80%',
         marginVertical: '5%',
@@ -108,17 +116,13 @@ export const ChatPageStyle = (StyleSheet.createstyle = StyleSheet.create({
         fontFamily: 'Baloo',
         fontSize: 14,
     },
-    messageOwnerName: {
-        color: '#fff',
-        fontFamily: 'Baloo',
-        paddingHorizontal: '5%',
-        fontSize: 14,
-        paddingTop: 10,
-    },
+
     messageOwnerMessage: {
         color: '#fff',
         fontFamily: 'Baloo',
         paddingHorizontal: '5%',
+        paddingTop: 5,
+
         fontSize: 14,
         marginBottom: 10,
     },
@@ -149,5 +153,9 @@ export const ChatPageStyle = (StyleSheet.createstyle = StyleSheet.create({
         fontWeight: '400',
         fontFamily: 'Baloo',
         fontSize: 14,
+    },
+    sendIcon: {
+        width: 20,
+        height: 20,
     },
 }))
