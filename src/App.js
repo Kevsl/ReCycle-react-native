@@ -24,6 +24,7 @@ import Store from './store'
 import Listing from './Views/Listing'
 import Search from './Views/Search'
 import AdsByCategory from './Views/AdsByCategory'
+import CreateListing from './Views/CreateListing'
 
 const App = () => {
     const Stack = createNativeStackNavigator()
@@ -66,8 +67,8 @@ const App = () => {
                         }}
                     />
                     <Stack.Screen
-                        name="create-ad"
-                        component={CreateAd}
+                        name="create-listing"
+                        component={CreateListing}
                         options={{
                             animation: 'slide_from_right',
                             headerShown: false,

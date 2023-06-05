@@ -113,3 +113,54 @@ export async function getListingByCategory(id, token) {
         return res.data
     })
 }
+export async function createListing(
+    title,
+    description,
+    listingTypeId,
+    listingSubTypeId,
+    listingCategoryId,
+    listingSubCategoryId,
+    postCode,
+    city,
+    latitude,
+    longitude,
+    files,
+    token
+) {
+    let url = `${process.env.REACT_APP_API_URL}listing/new`
+    let id = 4
+
+    const config2 = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'multipart/form-data',
+        },
+    }
+
+    const formData = new FormData()
+    formData.append('city', city)
+    formData.append('country', 'France')
+    formData.append('description', description)
+    formData.append('title', title)
+    formData.append('fkSubCategory', listingSubCategoryId)
+    formData.append('fkListingStatus', 1)
+    formData.append('fkListingType', listingTypeId)
+    formData.append('fkSubListingType', listingSubTypeId)
+    formData.append('fkProfile', 4)
+    formData.append('latitude', latitude)
+    formData.append('longitude', longitude)
+    formData.append('postCode', postCode)
+    formData.append('fkUser', '4')
+
+    if (Array.isArray(files)) {
+        files.forEach((file, index) => {
+            formData.append(`images[${index}]`, file)
+        })
+    } else if (files) {
+        formData.append('images[0]', files)
+    }
+
+    return axios.post(url, formData, config2).then((res) => {
+        return res.status
+    })
+}
