@@ -47,7 +47,7 @@ const CreateListing = ({ navigation }) => {
             launchCamera({ mediaType: 'photo', selectionLimit: 3 }).then(
                 (res) => {
                     setAcceptedListingImages(res.assets)
-                    setOpenGallery(false)
+                    setOpenCamera(false)
                 }
             )
         }
