@@ -35,7 +35,7 @@ export const Profile = ({ navigation }) => {
                         />
                         <TouchableOpacity
                             style={ProfileStyle.imageEditIcon}
-                            onPress={console.log('Une bonne chose de faite ! ')}
+                            onPress={console.log('En cours ')}
                         >
                             <Image style={ProfileStyle.penIcon} source={pen} />
                         </TouchableOpacity>

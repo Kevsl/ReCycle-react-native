@@ -23,7 +23,6 @@ export async function getSpecificConversation(id, token) {
     }
 
     return axios.get(url, config2).then((res) => {
-        console.log(token)
         return res.data
     })
 }
@@ -38,7 +37,6 @@ export async function sendFirstMessage(id, firstMessage, token) {
     return axios
         .post(url, { firstMessage: firstMessage }, config2)
         .then((res) => {
-            console.log(res)
             return res.data
         })
 }

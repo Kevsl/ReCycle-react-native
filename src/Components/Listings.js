@@ -15,7 +15,7 @@ export const Listings = ({ navigation, listings, isMounted }) => {
     return (
         <ScrollView style={ListingsStyle.AdScrollContainer}>
             <View style={ListingsStyle.flex}>
-                {listings ? (
+                {listings && listings.length > 0 ? (
                     listings.map((item) => {
                         return (
                             <View

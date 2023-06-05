@@ -12,7 +12,6 @@ export const Home = ({ navigation }) => {
     const [isMounted, setIsMounted] = useState(false)
 
     useEffect(() => {
-        console.log('va charger')
         getListings().then((res) => {
             setListings(res)
             setIsMounted(true)

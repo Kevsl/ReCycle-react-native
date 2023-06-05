@@ -22,6 +22,7 @@ import { MyAds } from './Views/MyAds'
 import { Provider } from 'react-redux'
 import Store from './store'
 import Listing from './Views/Listing'
+import Search from './Views/Search'
 
 const App = () => {
     const Stack = createNativeStackNavigator()
@@ -98,6 +99,14 @@ const App = () => {
                     <Stack.Screen
                         name="listing"
                         component={Listing}
+                        options={{
+                            animation: 'slide_from_right',
+                            headerShown: false,
+                        }}
+                    />
+                    <Stack.Screen
+                        name="search"
+                        component={Search}
                         options={{
                             animation: 'slide_from_right',
                             headerShown: false,

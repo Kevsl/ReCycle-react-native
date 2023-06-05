@@ -25,8 +25,6 @@ export const removeValue = async (key) => {
     } catch (e) {
         // remove error
     }
-
-    console.log('Done.')
 }
 
 export const clearAll = async () => {

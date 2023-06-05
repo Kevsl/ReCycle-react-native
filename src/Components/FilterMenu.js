@@ -6,7 +6,7 @@ export const FilterMenu = ({ navigation }) => {
         <View style={FiltersMenuStyle.secondMenu}>
             <View style={FiltersMenuStyle.secondMenuProductButtons}>
                 <TouchableOpacity
-                    onPress={console.log('Une bonne chose de faite ! ')}
+                    onPress={console.log('En cours ')}
                     style={FiltersMenuStyle.offersButton}
                 >
                     <Text style={FiltersMenuStyle.offersButtonText}>
@@ -14,7 +14,7 @@ export const FilterMenu = ({ navigation }) => {
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    onPress={console.log('Une bonne chose de faite ! ')}
+                    onPress={console.log('En cours ')}
                     style={FiltersMenuStyle.ordersButton}
                 >
                     <Text style={FiltersMenuStyle.ordersButtonText}>
@@ -23,7 +23,7 @@ export const FilterMenu = ({ navigation }) => {
                 </TouchableOpacity>
             </View>
             <TouchableOpacity
-                onPress={console.log('Une bonne chose de faite ! ')}
+                onPress={console.log('En cours ')}
                 style={FiltersMenuStyle.filtersButton}
             >
                 <Image

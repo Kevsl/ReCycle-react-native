@@ -17,10 +17,11 @@ import { GoBackArrow } from '../Components/GoBackArrow'
 import jwt_decode from 'jwt-decode'
 import { useDispatch } from 'react-redux'
 import { setToken, setUserId } from '../redux/reducers/navigation'
+import { getData } from '../Utils/localStorage'
 
 export const Login = ({ navigation }) => {
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('kevin@gmail.com')
+    const [password, setPassword] = useState('3!bKN;9H,o')
     const [isLoading, setIsLoading] = useState(false)
     const [emailOk, setEmailOk] = useState(false)
     const [passOK, setPassOk] = useState(false)
@@ -73,19 +74,23 @@ export const Login = ({ navigation }) => {
         checkPassword(value) === true ? setPassOk(true) : setPassOk(false)
     }
 
-    // useEffect(() => {
-    //     getData('token').then((res) => {
-    //         if (res !== undefined) {
-    //             navigation.navigate('home')
-    //         }
-    //     })
-    // })
+    useEffect(() => {
+        loginFunction('kevin@gmail.com', '3!bKN;9H,o').then((res) => {
+            console.log(res)
+            dispatch(setToken(res.data.token))
+            dispatch(setUserId(jwt_decode(res.data.token).id))
+            navigation.navigate('home')
+        })
+    })
 
     return (
         <View style={LoginStyle.container}>
             <GoBackArrow />
             <View style={LoginStyle.titleContainer}>
                 <Text style={LoginStyle.title}>Bonjour</Text>
+                <Text>kevin@gmail.com</Text>
+                <Text>3!bKN;9H,o</Text>
+
                 <Text style={LoginStyle.subTitle}>
                     Connectez-vous pour accèder à l’application
                 </Text>

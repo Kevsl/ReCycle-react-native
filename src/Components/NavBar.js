@@ -33,7 +33,7 @@ export const NavBar = (props) => {
             </TouchableOpacity>
             <TouchableOpacity
                 onPress={() => {
-                    navigation.navigate('home')
+                    navigation.navigate('search')
                 }}
             >
                 <Image source={search} style={NavBarStyle.icone} />
