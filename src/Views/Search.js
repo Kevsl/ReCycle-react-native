@@ -23,6 +23,7 @@ const Search = ({ navigation }) => {
     const [round, setRound] = useState(0)
     const [isMounted, setIsMounted] = useState(false)
     const token = useSelector(getCurrentToken)
+    const [errorMessage, setErrorMessage] = useState(false)
 
     const handleSearch = () => {
         setIsLoading(true)
@@ -102,6 +103,11 @@ const Search = ({ navigation }) => {
                     </TouchableOpacity>
                     <Text style={SearchStyle.noAdText}>Aucune annonce</Text>
                 </View>
+            )}
+            {errorMessage && (
+                <Text style={SearchStyle.errorMessage}>
+                    Tous les champs sont requis
+                </Text>
             )}
 
             <NavBar navigation={navigation} />

@@ -25,7 +25,8 @@ export const SearchMenuStyle = (StyleSheet.createstyle = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         marginLeft: '30%',
-        marginVertical: 10,
+        marginTop: 10,
+        marginBottom: 150,
     },
     sumbit: {
         color: 'white',
@@ -38,8 +39,8 @@ export const SearchMenuStyle = (StyleSheet.createstyle = StyleSheet.create({
         justifyContent: 'space-between',
         marginVertical: 20,
         height: 40,
-        width: '50%',
-        marginLeft: '25%',
+        width: '30%',
+        marginLeft: '10%',
     },
     round: {
         fontSize: 16,
@@ -49,7 +50,7 @@ export const SearchMenuStyle = (StyleSheet.createstyle = StyleSheet.create({
         paddingLeft: 10,
     },
     label: {
-        textAlign: 'center',
+        paddingLeft: '10%',
         fontWeight: 'bold',
         fontSize: 16,
     },

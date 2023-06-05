@@ -22,6 +22,9 @@ export const SearchMenu = ({
     round,
     setRound,
     handleSearch,
+    isNewAdd,
+    handleSubmit,
+    setZip,
 }) => {
     const [coordinatesList, setCoordinatesList] = useState([])
     const [query, setQuery] = useState([])
@@ -42,6 +45,7 @@ export const SearchMenu = ({
         setLatitude(resultCity.geometry.coordinates[1])
         setQueryFound(true)
         setCoordinatesList([])
+        setZip(resultCity.properties.postcode)
     }
     return (
         <ScrollView style={SearchMenuStyle.scrollView}>
@@ -57,17 +61,6 @@ export const SearchMenu = ({
             />
             <View>
                 <Text style={SearchMenuStyle.label}>Lieu</Text>
-
-                <TextInput
-                    value={queryFound ? city : query}
-                    style={SearchMenuStyle.cityInput}
-                    onChangeText={(text) => {
-                        setQueryFound(false)
-                        setQuery(text)
-                        setIsCitiesListVisible(true)
-                    }}
-                    placeholder="Ville"
-                />
                 {isCitiesListVisible && (
                     <View style={SearchMenuStyle.citiesList}>
                         {coordinatesList.map((resultCity) => {
@@ -87,25 +80,49 @@ export const SearchMenu = ({
                         })}
                     </View>
                 )}
-                <View style={SearchMenuStyle.roundView}>
-                    <TextInput
-                        value={round}
-                        style={SearchMenuStyle.round}
-                        onChangeText={(text) => {
-                            setRound(text)
-                        }}
-                        placeholder="Kms autour"
-                    />
-                </View>
+                <TextInput
+                    value={queryFound ? city : query}
+                    style={SearchMenuStyle.cityInput}
+                    onChangeText={(text) => {
+                        setQueryFound(false)
+                        setQuery(text)
+                        setIsCitiesListVisible(true)
+                    }}
+                    placeholder="Ville"
+                />
+
+                {!isNewAdd && (
+                    <View style={SearchMenuStyle.roundView}>
+                        <TextInput
+                            value={round}
+                            style={SearchMenuStyle.round}
+                            onChangeText={(text) => {
+                                setRound(text)
+                            }}
+                            placeholder="Kms autour"
+                        />
+                    </View>
+                )}
             </View>
-            <TouchableOpacity
-                style={SearchMenuStyle.sumbitButton}
-                onPress={() => {
-                    handleSearch()
-                }}
-            >
-                <Text style={SearchMenuStyle.sumbit}>Rechercher</Text>
-            </TouchableOpacity>
+            {isNewAdd ? (
+                <TouchableOpacity
+                    style={SearchMenuStyle.sumbitButton}
+                    onPress={() => {
+                        handleSubmit()
+                    }}
+                >
+                    <Text style={SearchMenuStyle.sumbit}>Publier</Text>
+                </TouchableOpacity>
+            ) : (
+                <TouchableOpacity
+                    style={SearchMenuStyle.sumbitButton}
+                    onPress={() => {
+                        handleSearch()
+                    }}
+                >
+                    <Text style={SearchMenuStyle.sumbit}>Rechercher</Text>
+                </TouchableOpacity>
+            )}
         </ScrollView>
     )
 }

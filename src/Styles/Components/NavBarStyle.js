@@ -3,8 +3,8 @@ import { StyleSheet } from 'react-native'
 export const NavBarStyle = (StyleSheet.createstyle = StyleSheet.create({
     container: {
         backgroundColor: '#fff',
-        marginHorizontal: '10%',
-        width: '80%',
+        marginHorizontal: '5%',
+        width: '90%',
         marginTop: 50,
         display: 'flex',
         flexDirection: 'row',

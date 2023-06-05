@@ -40,4 +40,8 @@ export const SearchStyle = (StyleSheet.createstyle = StyleSheet.create({
         marginTop: 300,
         textAlign: 'center',
     },
+    errorMessage: {
+        color: '#DA2D2D',
+        textAlign: 'center',
+    },
 }))

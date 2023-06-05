@@ -95,7 +95,9 @@ export const CategoryMenu = ({
                         )
                     })}
             </View>
-            <Text style={CategoryMenuStyle.label}>Sous-Catégorie</Text>
+            {listingCategoryId && (
+                <Text style={CategoryMenuStyle.label}>Sous-Catégorie</Text>
+            )}
 
             <View style={CategoryMenuStyle.styleContainer}>
                 {listingSubCategoriesList &&
