@@ -1,45 +1,41 @@
+/* eslint-disable semi */
 import React, { useState, useEffect } from 'react'
-import {
-    Text,
-    View,
-    Image,
-    TextInput,
-    TouchableOpacity,
-    ActivityIndicator,
-} from 'react-native'
+import { Text, View, Image, TouchableOpacity } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
-import { ListingsStyle } from '../Styles/Listings'
-import { getListings } from '../Services/Listings.service'
+import { ListingsStyle } from '../Styles/Components/Listings'
+import noPhoto from '../Assets/no-photo.png'
+import { Loader } from './Loader'
+import { useDispatch } from 'react-redux'
+import { selectListing } from '../redux/reducers/navigation'
 
-import redHeart from '../Assets/redHeart.png'
-export const Listings = () => {
-    const [listings, setListings] = useState([])
-    const [isLoading, setIsLoading] = useState(false)
-    const [okeys, setOkeys] = useState()
-    const [ovalues, setOvalues] = useState()
-    const [isMounted, setIsMounted] = useState(false)
-
-    useEffect(() => {
-        setIsLoading(true)
-        getListings().then((res) => {
-            setListings(res)
-            setIsLoading(false)
-            setIsMounted(true)
-        })
-    }, [])
+export const Listings = ({ navigation, listings, isMounted }) => {
+    //   const dailyServiceTime = useSelector(getDailyServiceTime)
+    const dispatch = useDispatch()
 
     return (
         <ScrollView style={ListingsStyle.AdScrollContainer}>
             <View style={ListingsStyle.flex}>
-                {isMounted === true ? (
+                {listings && listings.length > 0 ? (
                     listings.map((item) => {
-                        console.log(item.images[0])
                         return (
-                            <View style={ListingsStyle.adsContainer}>
-                                <View style={ListingsStyle.ad}>
+                            <View
+                                style={ListingsStyle.adsContainer}
+                                key={item.id}
+                            >
+                                <TouchableOpacity
+                                    style={ListingsStyle.ad}
+                                    onPress={() => {
+                                        navigation.navigate('listing')
+                                        dispatch(selectListing(item.id))
+                                    }}
+                                >
                                     <Image
                                         source={{
-                                            uri: item.images[0],
+                                            uri: item.listingCoverImage
+                                                ? item.listingCoverImage
+                                                : item.image
+                                                ? item.image[0]
+                                                : noPhoto,
                                         }}
                                         style={ListingsStyle.adImage}
                                     />
@@ -50,19 +46,13 @@ export const Listings = () => {
                                         <Text style={ListingsStyle.adCity}>
                                             {item.city}
                                         </Text>
-                                        <TouchableOpacity>
-                                            <Image
-                                                source={redHeart}
-                                                style={ListingsStyle.heart}
-                                            />
-                                        </TouchableOpacity>
                                     </View>
-                                </View>
+                                </TouchableOpacity>
                             </View>
                         )
                     })
                 ) : (
-                    <ActivityIndicator size="large" color="#14213D" />
+                    <Loader color="#14213D" />
                 )}
             </View>
         </ScrollView>

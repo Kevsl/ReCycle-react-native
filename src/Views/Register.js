@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import {
     Text,
     View,
@@ -7,13 +7,14 @@ import {
     TouchableOpacity,
     ActivityIndicator,
 } from 'react-native'
-import {checkEmail, checkPassword} from '../Utils/regex'
-import {RegisterStyle} from '../Styles/Register'
-import goBackArrow from '../Assets/goBackArrow.png'
+import { checkEmail, checkPassword } from '../Utils/regex'
+import { RegisterStyle } from '../Styles/Views/Register'
 import redCross from '../Assets/redCross.png'
 import greenCheck from '../Assets/greenCheck.png'
+import { GoBackArrow } from '../Components/GoBackArrow'
+import { getData } from '../Utils/localStorage'
 
-export const Register = ({navigation}) => {
+export const Register = ({ navigation }) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirm, setConfirm] = useState('')
@@ -33,7 +34,7 @@ export const Register = ({navigation}) => {
 
     function handleSimilarPasswords(password1, password2) {
         if (password1 === password2) {
-            setSimilarPassOk(true);
+            setSimilarPassOk(true)
         } else if (password1 !== password2) {
             setSimilarPassOk(false)
         }
@@ -49,25 +50,23 @@ export const Register = ({navigation}) => {
 
     function handleRegister() {
         if (passOK && emailOk && similarPassOk) {
-            navigation.navigate('home');
+            navigation.navigate('home')
         }
     }
+    useEffect(() => {
+        const token = getData('token')
+        if (token && token !== 'undefined') {
+            navigation.navigate('home')
+        }
+    }, [email, navigation])
 
     return (
         <View style={RegisterStyle.container}>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
-                <Image
-                    source={goBackArrow}
-                    style={RegisterStyle.goBackArrow}
-                    accessibilityLabel="Retourner sur la page précédente"
-                />
-            </TouchableOpacity>
+            <GoBackArrow navigation={navigation} />
 
             <View style={RegisterStyle.titleContainer}>
                 <Text style={RegisterStyle.title}>Bonjour</Text>
-                <Text style={RegisterStyle.subTitle}>
-                    Création de compte
-                </Text>
+                <Text style={RegisterStyle.subTitle}>Création de compte</Text>
             </View>
 
             <View style={RegisterStyle.inputView}>
@@ -85,8 +84,8 @@ export const Register = ({navigation}) => {
                             emailOk === true
                                 ? RegisterStyle.TextInputRight
                                 : email.length > 0 && emailOk === false
-                                    ? RegisterStyle.TextInputWrong
-                                    : RegisterStyle.TextInput
+                                ? RegisterStyle.TextInputWrong
+                                : RegisterStyle.TextInput
                         }
                         placeholderTextColor="#000"
                         onChangeText={(email) => {
@@ -95,9 +94,12 @@ export const Register = ({navigation}) => {
                         }}
                     />
                     {emailOk === true ? (
-                        <Image source={greenCheck} style={RegisterStyle.icone}/>
+                        <Image
+                            source={greenCheck}
+                            style={RegisterStyle.icone}
+                        />
                     ) : email.length > 0 && emailOk === false ? (
-                        <Image source={redCross} style={RegisterStyle.icone}/>
+                        <Image source={redCross} style={RegisterStyle.icone} />
                     ) : null}
                 </View>
             </View>
@@ -107,8 +109,9 @@ export const Register = ({navigation}) => {
 
                 {password.length > 0 && passOK === false && (
                     <Text style={RegisterStyle.wrongInput}>
-                        Le mot de passe doit contenir au moins 8 caractères, dont au moins 1 minuscule, 1 majuscule, 1 chiffre et
-                        un caractère spécial.
+                        Le mot de passe doit contenir au moins 8 caractères,
+                        dont au moins 1 minuscule, 1 majuscule, 1 chiffre et un
+                        caractère spécial.
                     </Text>
                 )}
 
@@ -118,8 +121,8 @@ export const Register = ({navigation}) => {
                             passOK === true
                                 ? RegisterStyle.TextInputRight
                                 : password.length > 0 && passOK === false
-                                    ? RegisterStyle.TextInputWrong
-                                    : RegisterStyle.TextInput
+                                ? RegisterStyle.TextInputWrong
+                                : RegisterStyle.TextInput
                         }
                         placeholderTextColor="#000"
                         onChangeText={(password) => {
@@ -129,9 +132,12 @@ export const Register = ({navigation}) => {
                         secureTextEntry={true}
                     />
                     {passOK === true ? (
-                        <Image source={greenCheck} style={RegisterStyle.icone}/>
+                        <Image
+                            source={greenCheck}
+                            style={RegisterStyle.icone}
+                        />
                     ) : password.length > 0 && passOK === false ? (
-                        <Image source={redCross} style={RegisterStyle.icone}/>
+                        <Image source={redCross} style={RegisterStyle.icone} />
                     ) : null}
                 </View>
 
@@ -149,8 +155,8 @@ export const Register = ({navigation}) => {
                             passOK === true
                                 ? RegisterStyle.TextInputRight
                                 : password.length > 0 && passOK === false
-                                    ? RegisterStyle.TextInputWrong
-                                    : RegisterStyle.TextInput
+                                ? RegisterStyle.TextInputWrong
+                                : RegisterStyle.TextInput
                         }
                         placeholderTextColor="#000"
                         onChangeText={(confirm) => {
@@ -160,9 +166,12 @@ export const Register = ({navigation}) => {
                         secureTextEntry={true}
                     />
                     {confirm.length > 0 && similarPassOk === true ? (
-                        <Image source={greenCheck} style={RegisterStyle.icone}/>
+                        <Image
+                            source={greenCheck}
+                            style={RegisterStyle.icone}
+                        />
                     ) : confirm.length > 0 && similarPassOk === false ? (
-                        <Image source={redCross} style={RegisterStyle.icone}/>
+                        <Image source={redCross} style={RegisterStyle.icone} />
                     ) : null}
                 </View>
             </View>
@@ -172,10 +181,9 @@ export const Register = ({navigation}) => {
                     disabledRegisterBtn === true
                         ? RegisterStyle.registerBtnDisabled
                         : disabledRegisterBtn === false
-                            ? RegisterStyle.registerBtnEnabled
-                            : RegisterStyle.registerBtnDisabled
+                        ? RegisterStyle.registerBtnEnabled
+                        : RegisterStyle.registerBtnDisabled
                 }
-
                 onPress={() => {
                     handleRegister()
                 }}

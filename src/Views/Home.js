@@ -1,64 +1,42 @@
+/* eslint-disable semi */
 import { NavBar } from '../Components/NavBar'
-import React, { useState, useEffect } from 'react'
-import {
-    Text,
-    View,
-    Image,
-    TouchableOpacity,
-    ActivityIndicator,
-    ScrollView,
-} from 'react-native'
-import goBackArrow from '../Assets/goBackArrow.png'
-import filters from '../Assets/filters.png'
-
-import { HomeStyle } from '../Styles/Home'
+import { Text, TouchableOpacity, View } from 'react-native'
+import { HomeStyle } from '../Styles/Views/Home'
 import { Listings } from '../Components/Listings'
+import React, { useState, useEffect } from 'react'
+import { getListings } from '../Services/Listings.service'
 
 export const Home = ({ navigation }) => {
+    const [listings, setListings] = useState([])
+    const [isMounted, setIsMounted] = useState(false)
+
+    useEffect(() => {
+        getListings().then((res) => {
+            setListings(res)
+            setIsMounted(true)
+        })
+    }, [])
+
     return (
         <View style={HomeStyle.container}>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
-                <Image
-                    source={goBackArrow}
-                    style={HomeStyle.goBackArrow}
-                    accessibilityLabel="Retourner sur la page précèdente"
-                />
-            </TouchableOpacity>
             <View style={HomeStyle.titleContainer}>
-                <Text style={HomeStyle.title}>Mes annonces </Text>
-            </View>
-            <View style={HomeStyle.secondMenu}>
-                <View style={HomeStyle.secondMenuProductButtons}>
-                    <TouchableOpacity
-                        onPress={console.log('Une bonne chose de faite ! ')}
-                        style={HomeStyle.offersButton}
-                    >
-                        <Text style={HomeStyle.offersButtonText}>Offres</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        onPress={console.log('Une bonne chose de faite ! ')}
-                        style={HomeStyle.ordersButton}
-                    >
-                        <Text style={HomeStyle.ordersButtonText}>Demandes</Text>
-                    </TouchableOpacity>
-                </View>
                 <TouchableOpacity
-                    onPress={console.log('Une bonne chose de faite ! ')}
-                    style={HomeStyle.filtersButton}
+                    style={HomeStyle.categoryButton}
+                    onPress={() => {
+                        navigation.navigate('ads-by-category')
+                    }}
                 >
-                    <Image
-                        source={filters}
-                        style={HomeStyle.filterIcon}
-                        accessibilityLabel="Retourner sur la page précèdente"
-                    />
-                    <Text style={HomeStyle.filtersButtonText}>Filtres</Text>
-                    <View style={HomeStyle.notificationFilter}>
-                        <Text style={HomeStyle.notificationText}>2</Text>
-                    </View>
+                    <Text style={HomeStyle.categoryButtonText}>
+                        {'< '} Recherche par catégories
+                    </Text>
                 </TouchableOpacity>
+                <Text style={HomeStyle.title}>Nos dernières annonces </Text>
             </View>
-            <Text style={HomeStyle.adsContainerTitle}>Annonces</Text>
-            <Listings />
+            <Listings
+                navigation={navigation}
+                listings={listings}
+                isMounted={isMounted}
+            />
             <NavBar navigation={navigation} />
         </View>
     )

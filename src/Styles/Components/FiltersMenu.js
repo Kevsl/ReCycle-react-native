@@ -1,25 +1,10 @@
 import { StyleSheet } from 'react-native'
 
-export const ListingsStyle = (StyleSheet.createstyle = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        paddingTop: '20%',
-    },
-    goBackArrow: { position: 'absolute', left: '5%', top: '10%' },
-    titleContainer: {
-        marginTop: '10%',
-        marginHorizontal: '5%',
-    },
-    title: {
-        color: '#6A6F7D',
-        fontSize: 30,
-        fontFamily: 'baloo',
-    },
+export const FiltersMenuStyle = (StyleSheet.createstyle = StyleSheet.create({
     secondMenu: {
         backgroundColor: '#E5E5E5',
         height: 60,
-        marginTop: '10%',
+        marginBottom: '10%',
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-around',
@@ -120,53 +105,5 @@ export const ListingsStyle = (StyleSheet.createstyle = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 10,
         paddingVertical: 4,
-    },
-    adsContainer: {
-        width: '40%',
-        marginHorizontal: '5%',
-        height: 200,
-        marginVertical: '2%',
-        borderRadius: 16,
-    },
-    AdScrollContainer: { borderRadius: 16 },
-    adImage: {
-        flex: 1,
-        borderTopEndRadius: 16,
-        borderTopStartRadius: 16,
-    },
-    ad: {
-        flex: 1,
-        width: '100%',
-        maxHeight: 200,
-        borderRadius: 16,
-    },
-    flex: {
-        width: '100%',
-        display: 'flex',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-    },
-    adText: {
-        backgroundColor: '#EAF2FF',
-        fontSize: 14,
-        height: '30%',
-        paddingTop: '5%',
-        textAlign: 'center',
-    },
-    adCity: {
-        fontSize: 12,
-        height: '30%',
-        textAlign: 'left',
-        paddingLeft: '5%',
-    },
-    adInformations: {
-        backgroundColor: '#EAF2FF',
-        height: '35%',
-        borderBottomLeftRadius: 16,
-        borderBottomRightRadius: 16,
-    },
-    heart: {
-        marginLeft: 'auto',
-        marginRight: '5%',
     },
 }))
