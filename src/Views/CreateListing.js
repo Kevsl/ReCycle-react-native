@@ -112,6 +112,7 @@ const CreateListing = ({ navigation }) => {
                     <TouchableOpacity
                         style={CreateListingStyle.imageButton}
                         onPress={() => {
+
                             setOpenCamera(true)
                         }}
                     >
