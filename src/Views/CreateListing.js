@@ -38,7 +38,6 @@ const CreateListing = ({ navigation }) => {
         if (openGallery) {
             launchImageLibrary({ mediaType: 'photo', selectionLimit: 3 }).then(
                 (res) => {
-                    console.log(res.assets)
                     setAcceptedListingImages(res.assets)
                     setOpenGallery(false)
                 }
@@ -47,9 +46,8 @@ const CreateListing = ({ navigation }) => {
         if (openCamera) {
             launchCamera({ mediaType: 'photo', selectionLimit: 3 }).then(
                 (res) => {
-                    console.log(res.assets)
                     setAcceptedListingImages(res.assets)
-                    setOpenGallery(false)
+                    setOpenCamera(false)
                 }
             )
         }
@@ -114,7 +112,8 @@ const CreateListing = ({ navigation }) => {
                     <TouchableOpacity
                         style={CreateListingStyle.imageButton}
                         onPress={() => {
-                            setOpenCamera(false)
+
+                            setOpenCamera(true)
                         }}
                     >
                         <Image
