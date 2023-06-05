@@ -1,9 +1,8 @@
 /* eslint-disable semi */
 import { NavBar } from '../Components/NavBar'
-import { Text, View } from 'react-native'
+import { Text, TouchableOpacity, View } from 'react-native'
 import { HomeStyle } from '../Styles/Views/Home'
 import { Listings } from '../Components/Listings'
-import { GoBackArrow } from '../Components/GoBackArrow'
 import React, { useState, useEffect } from 'react'
 import { getListings } from '../Services/Listings.service'
 
@@ -20,11 +19,19 @@ export const Home = ({ navigation }) => {
 
     return (
         <View style={HomeStyle.container}>
-            <GoBackArrow navigation={navigation} />
             <View style={HomeStyle.titleContainer}>
-                <Text style={HomeStyle.title}>Mes annonces </Text>
+                <TouchableOpacity
+                    style={HomeStyle.categoryButton}
+                    onPress={() => {
+                        navigation.navigate('ads-by-category')
+                    }}
+                >
+                    <Text style={HomeStyle.categoryButtonText}>
+                        {'< '} Recherche par catégories
+                    </Text>
+                </TouchableOpacity>
+                <Text style={HomeStyle.title}>Nos dernières annonces </Text>
             </View>
-            <Text style={HomeStyle.AdsContainerTitle}>Annonces</Text>
             <Listings
                 navigation={navigation}
                 listings={listings}

@@ -104,3 +104,12 @@ export async function getSubCategoriesByCategoryId(id, token) {
         return res.data
     })
 }
+export async function getListingByCategory(id, token) {
+    let url = `${API_URL}listing/images/category/${id}`
+    const config2 = {
+        headers: { Authorization: `Bearer ${token}` },
+    }
+    return axios.get(url, config2).then((res) => {
+        return res.data
+    })
+}

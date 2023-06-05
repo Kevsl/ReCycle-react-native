@@ -23,6 +23,7 @@ import { Provider } from 'react-redux'
 import Store from './store'
 import Listing from './Views/Listing'
 import Search from './Views/Search'
+import AdsByCategory from './Views/AdsByCategory'
 
 const App = () => {
     const Stack = createNativeStackNavigator()
@@ -107,6 +108,14 @@ const App = () => {
                     <Stack.Screen
                         name="search"
                         component={Search}
+                        options={{
+                            animation: 'slide_from_right',
+                            headerShown: false,
+                        }}
+                    />
+                    <Stack.Screen
+                        name="ads-by-category"
+                        component={AdsByCategory}
                         options={{
                             animation: 'slide_from_right',
                             headerShown: false,
