@@ -5,6 +5,7 @@ export const CategoryMenuStyle = (StyleSheet.createstyle = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
     },
+
     styleContainer: {
         display: 'flex',
         flexDirection: 'row',

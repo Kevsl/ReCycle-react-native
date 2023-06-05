@@ -47,7 +47,7 @@ const Search = ({ navigation }) => {
             <GoBackArrow navigation={navigation} />
 
             {!isAdsVisible ? (
-                <View>
+                <View style={SearchStyle.listingContainer}>
                     <SearchMenu
                         setIsAdsVisible={setIsAdsVisible}
                         listingTypeId={listingTypeId}
